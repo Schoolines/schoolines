@@ -1,0 +1,27 @@
+doctype html
+html(ng-app="schoolines")
+  head
+    meta(charset='utf8')
+    title Schoolines
+    
+    script(src="/javascripts/vendor/jquery.min.js")
+    script(src="/javascripts/vendor/angular.min.js")
+    script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js")
+    script(src="/javascripts/vendor/angular-route.js")
+    script(src="/javascripts/vendor/angular-cookies.js")
+
+    
+    // initialization
+    script(src="/app/app.js")
+    
+    // include services
+    script(src="/app/services/authService.js")
+    
+    // include controllers
+    script(src="/app/components/index/indexController.js")
+    
+    
+    
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    ng-view
