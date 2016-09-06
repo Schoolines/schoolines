@@ -7,4 +7,4 @@ Install packages: `npm install`
 
 Start Server: `npm start`
 
-Access by http://localhost:3000
+Access by http://localhost:3000/
