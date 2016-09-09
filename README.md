@@ -3,8 +3,12 @@ An crowd-sourced platform to manage deadlines
 
 # Setup
 
-Install packages: `npm install`
+Install packages run: `npm install`
 
-Start Server: `npm start`
+config your database setting at `config/config.json`
+
+Database Migration run: `node_modules/.bin/sequelize db:migrate`
+
+Start Server run: `npm start`
 
 Access by http://localhost:3000/
