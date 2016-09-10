@@ -10,7 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     matriculationYear: DataTypes.STRING,
     gender: DataTypes.BOOLEAN,
     exp: DataTypes.INTEGER,
-    matricNumber: DataTypes.STRING
+    matricNumber: {type: DataTypes.STRING, unique: true}
   }, {
     classMethods: {
       associate: function(models) {
