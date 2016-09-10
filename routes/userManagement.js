@@ -27,11 +27,13 @@ router.post("/createUser", function(req, res){
                 }
             }, {
                 include: [models.School]
+            }).then(function(){
+                res.send({
+                    status: "created"
+                });
             });
 
-            res.send({
-                status: "created"
-            })
+
         }else{
             console.log("user already exists");
             res.send({
