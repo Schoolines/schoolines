@@ -11,6 +11,20 @@ module.exports = {
       upVote: {
         type: Sequelize.BOOLEAN
       },
+      voterId: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: "Users",
+            key: "id"
+        }
+      },
+      deadlineId: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: "Deadlines",
+            key: "id"
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

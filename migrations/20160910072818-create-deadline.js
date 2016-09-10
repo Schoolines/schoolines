@@ -17,6 +17,17 @@ module.exports = {
       due: {
         type: Sequelize.DATE
       },
+      module: {
+        type: Sequelize.STRING,
+        allowNull: false
+      },
+      contributorId: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: "Users",
+            key: "id"
+        }  
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

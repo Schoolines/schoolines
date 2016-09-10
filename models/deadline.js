@@ -3,6 +3,7 @@ module.exports = function(sequelize, DataTypes) {
   var Deadline = sequelize.define('Deadline', {
     title: DataTypes.STRING,
     description: DataTypes.TEXT,
+    module: {type: DataTypes.STRING, allowNull: false},
     due: DataTypes.DATE
   }, {
     classMethods: {

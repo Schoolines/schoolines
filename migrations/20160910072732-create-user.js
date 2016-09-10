@@ -39,6 +39,13 @@ module.exports = {
         type: Sequelize.STRING,
         unique: true
       },
+      schoolId: {
+        type: Sequelize.INTEGER,
+        references: {
+            model: "Schools",
+            key: "id"
+        }
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
