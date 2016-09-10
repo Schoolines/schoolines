@@ -12,18 +12,18 @@ router.post("/createUser", function(req, res){
         var School = models.School;
         if(user == null){
             models.User.create({
-                name: req.body.name,
-                authToken: req.body.authToken,
-                faculty: req.body.faculty,
-                email: req.body.email,
-                firstMajor: req.body.firstMajor,
-                secondMajor: req.body.secondMajor,
-                matriculationYear: req.body.matriculationYear,
-                gender: req.body.gender,
+                name: req.body.Name,
+                authToken: req.body.AuthToken,
+                faculty: req.body.Faculty,
+                email: req.body.Email,
+                firstMajor: req.body.FirstMajor,
+                secondMajor: req.body.SecondMajor,
+                matriculationYear: req.body.MatriculationYear,
+                gender: req.body.Gender,
                 exp: 0,
-                matricNumber: req.body.matricNumber
+                matricNumber: req.body.UserID,
                 School: {
-                    name: req.body.school
+                    name: req.body.School
                 }
             }, {
                 include: [models.School]
@@ -42,3 +42,5 @@ router.post("/createUser", function(req, res){
         }
     });
 });
+
+module.exports = router;
