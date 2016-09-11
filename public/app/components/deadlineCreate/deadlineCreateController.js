@@ -1,7 +1,14 @@
-var express = require('express');
-var router = express.Router();
-var models = require("../models");
+'use strict'
 
-router.post("/createUser", function(req, res){
-    
-})
+angular.module("schoolines").controller("deadlineCreateController", ["$scope", "$location", "AuthService", "DeadlineService",
+    function($scope, $location, AuthService, DeadlineService) {
+        AuthService.autologin();
+
+        $scope.deadline = {};
+        $scope.createDeadline = function(){
+            DeadlineService.create($scope.deadline).then(function(res){
+                console.log("created");
+            });
+        };
+    }
+]);

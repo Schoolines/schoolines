@@ -16,6 +16,10 @@ schoolines.config(["$routeProvider", "$locationProvider",
                 }
             }
         }).
+        when("/deadlineCreate", {
+            templateUrl: "/app/components/deadlineCreate/deadlineCreate.html",
+            controller: "deadlineCreateController",
+        }).
         otherwise({
             redirectTo: "/"
         });
