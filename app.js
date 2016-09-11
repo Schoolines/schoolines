@@ -8,6 +8,8 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var deadlineManagement = require('./routes/deadlineManagement');
 var userManagement = require('./routes/userManagement');
+var voteManagement = require('./routes/voteManagement');
+
 
 var app = express();
 
@@ -26,6 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/deadlineManagement', deadlineManagement);
 app.use('/userManagement', userManagement);
+app.use('/voteManagement', voteMangement);
 // error handlers
 
 // development error handler
