@@ -6,6 +6,11 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
+var deadlineManagement = require('./routes/deadlineManagement');
+var userManagement = require('./routes/userManagement');
+var voteManagement = require('./routes/voteManagement');
+var expManagement = require('./routes/expManagement');
+
 
 var app = express();
 
@@ -22,14 +27,10 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
-
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
-
+app.use('/deadlineManagement', deadlineManagement);
+app.use('/userManagement', userManagement);
+app.use('/voteManagement', voteMangement);
+app.use('/expManagement', expManagement);
 // error handlers
 
 // development error handler

@@ -21,7 +21,7 @@ router.post("/createUser", function(req, res){
                 matriculationYear: req.body.matriculationYear,
                 gender: req.body.gender,
                 exp: 0,
-                matricNumber: req.body.matricNumber
+                matricNumber: req.body.matricNumber,
                 School: {
                     name: req.body.school
                 }
@@ -42,3 +42,5 @@ router.post("/createUser", function(req, res){
         }
     });
 });
+
+module.exports = router;

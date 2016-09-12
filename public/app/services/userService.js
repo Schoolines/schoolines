@@ -9,4 +9,6 @@ angular.module("schoolines").factory("UserService", function($http, $location){
             return res.data;
         });
     }
+
+    return userService;
 })
