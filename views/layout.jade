@@ -17,6 +17,7 @@ html(ng-app="schoolines")
     // include services
     script(src="/app/services/authService.js")
     script(src="/app/services/deadlineService.js")
+    script(src="/app/services/ivleService.js")
     script(src="/app/services/userService.js")
     script(src="/app/services/voteService.js")
     script(src="/app/services/expService.js")
@@ -29,4 +30,5 @@ html(ng-app="schoolines")
     
     link(rel='stylesheet', href='/stylesheets/style.css')
   body
+    block content
     ng-view

@@ -21,7 +21,11 @@ router.post("/createUser", function(req, res){
                 matriculationYear: req.body.MatriculationYear,
                 gender: req.body.Gender,
                 exp: 0,
+<<<<<<< HEAD
+                matricNumber: req.body.matricNumber,
+=======
                 matricNumber: req.body.UserID,
+>>>>>>> ivle
                 School: {
                     name: req.body.School
                 }
@@ -43,4 +47,8 @@ router.post("/createUser", function(req, res){
     });
 });
 
+<<<<<<< HEAD
 module.exports = router;
+=======
+module.exports = router;
+>>>>>>> ivle
