@@ -1,16 +1,20 @@
 'use strict';
 angular.module("schoolines").controller('indexController', ["$scope", "$timeout", "$mdSidenav", "$log", "$location", "$routeParams", "$window", "IVLEService", "Session",
         function($scope, $timeout, $mdSidenav, $log, $location, $routeParams, $window, IVLEService, Session) {
-            $scope.link = function() {
-                console.log("haha");
-                $window.location.href = IVLEService.getLoginUrl();
-            }
+			$scope.title = "this is schoolines app";
+		    $scope.link = function(){
+		    	$window.location.href = IVLEService.getLoginUrl();
+		    }
 
-            // Save token to session
-            if ($routeParams.token) {
-                Session.create($routeParams.token);
-                IVLEService.getUserInfo(Session.token);
-            }
+		    // Save token to session
+		    if ($routeParams.token) {
+		    	$location.url('/');
+		    	Session.create($routeParams.token);
+		    	IVLEService.createUser(Session.token);
+		    	IVLEService.getModules(Session.token);
+		        DeadlineService.getDeadline();
+		    }
+
 
             $scope.deadlines = [{
                 "module": "cs3216",
@@ -49,6 +53,7 @@ angular.module("schoolines").controller('indexController', ["$scope", "$timeout"
                     }, wait || 10);
                 };
             }
+
 
             /**
              * Build handler to open/close a SideNav; when animation finishes

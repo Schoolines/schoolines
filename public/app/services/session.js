@@ -5,6 +5,10 @@ angular.module("schoolines").service("Session", function() {
 		this.token = token;
 	}
 
+	this.saveModules = function(modules) {
+		this.modules = modules;
+	}
+
 	this.destroy = function(token) {
 		this.token = null;
 	}
