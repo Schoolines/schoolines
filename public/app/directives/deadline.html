@@ -1,8 +1,8 @@
 
 
-<div ng-controller="deadlineCtrl">
+<div ng-controller="indexController">
 
-	
+
 	<!--browser size-->
 	<div hide show-gt-md layout="row">
 		<div layout="column" class="full-height">
@@ -12,7 +12,7 @@
         md-whiteframe="4" flex>
 				<md-content layout-padding>
 					<md-list flex>
-					
+
 						<md-list-item ng-click="null" >
 							<p class="md-title"layout="row">CS3216</p>
 						</md-list-item>
@@ -32,7 +32,7 @@
 
 			<md-content>
 			  <md-list flex>
-				
+
 				<md-list-item  ng-repeat="item in deadlines" ng-click="null" >
 				  <span class="circle-gt-md md-title" style="background-color:{{item.color}}" >{{ item.module }}</span>
 				  <div class="md-list-item-text">
@@ -47,7 +47,7 @@
 			</md-content>
 			</div>
 	</div>
-	
+
 	<!--mobile size-->
 	<div hide-gt-md layout="row">
 		<div layout="column">
@@ -57,11 +57,11 @@
 				md-is-locked-open="$mdMedia('gt-md')"
 				md-whiteframe="4">
 
-			  
+
 			  <md-content layout-padding ng-controller="LeftCtrl">
 				<md-list flex>
-				
-					
+
+
 					<md-list-item ng-click="null" >
 							<p class="md-display-2" layout="row">CS3216</p>
 						</md-list-item>
@@ -70,20 +70,20 @@
 						</md-list-item>
 				  </md-list>
 			  </md-content>
-				
-				
+
+
 			</md-sidenav>
 		</div>
 		<div layout="column" flex>
 			<md-toolbar   class="md-hue-3 height-150">
 			  <div class="md-toolbar-tools">
-				<img class="drawer-icon" src="/browser/deadline/drawer.png" ng-click="toggleLeft()"/><span flex></span><span class="md-display-2">Deadlines</span><span flex></span>
+				<img class="drawer-icon" src="/images/drawer.png" ng-click="toggleLeft()"/><span flex></span><span class="md-display-2">Deadlines</span><span flex></span>
 			  </div>
 			</md-toolbar>
-			
+
 			<md-content>
 			  <md-list flex>
-				
+
 				<md-list-item  ng-repeat="item in deadlines" ng-click="null" >
 				  <span class="circle md-display-2" style="background-color:{{item.color}}" >{{ item.module }}</span>
 				  <div class="md-list-item-text" >
@@ -99,4 +99,3 @@
 		</div>
 	</div>
 </div>
-

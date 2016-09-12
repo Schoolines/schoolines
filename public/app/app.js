@@ -1,11 +1,11 @@
 "use strict"
 
 var schoolines = angular.module("schoolines", [
-    "ngRoute", "ngCookies", "ngResource"
+    "ngRoute","ngMaterial", "ngCookies", "ngResource"
 ]);
 
-schoolines.config(["$routeProvider", "$locationProvider",
-    function($routeProvider, $locationProvider) {
+schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider",
+    function($routeProvider, $locationProvider, $mdThemingProvider) {
         $routeProvider.
         when("/", {
             templateUrl: "/app/components/index/index.html",
@@ -22,6 +22,13 @@ schoolines.config(["$routeProvider", "$locationProvider",
         }).
         otherwise({
             redirectTo: "/"
+        });
+
+        $mdThemingProvider.theme('default').primaryPalette('red');
+    	$mdThemingProvider.enableBrowserColor({
+          theme: 'default', // Default is 'default'
+          palette: 'red', // Default is 'primary', any basic material palette and extended palettes are available
+          hue: '200' // Default is '800'
         });
     }
 ]);

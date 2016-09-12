@@ -2,17 +2,26 @@ doctype html
 html(ng-app="schoolines")
   head
     meta(charset='utf8')
-    title Schoolines
+    title Schoolines 
     
+    
+    // javascripts
     script(src="/javascripts/vendor/jquery.min.js")
     script(src="/javascripts/vendor/angular.min.js")
     script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js")
     script(src="/javascripts/vendor/angular-route.js")
     script(src="/javascripts/vendor/angular-cookies.js")
+    script(src="/javascripts/vendor/angular-ui-router.min.js")
+    script(src="/javascripts/vendor/angular-aria.min.js")
+    script(src="/javascripts/vendor/angular-animate.min.js")
+    script(src="/javascripts/vendor/angular-material.min.js")
 
     
     // initialization
     script(src="/app/app.js")
+    
+    // include directives
+    script(src="/app/directives/deadlineDirective.js")
     
     // include services
     script(src="/app/services/authService.js")
@@ -28,8 +37,10 @@ html(ng-app="schoolines")
     script(src="/app/components/deadlineCreate/deadlineCreateController.js")
     
     
-    
+    // css
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="stylesheet" href="/stylesheets/angular-material.min.css")
+    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic")
   body
     block content
     ng-view

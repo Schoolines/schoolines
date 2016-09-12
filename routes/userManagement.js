@@ -16,7 +16,7 @@ router.post("/createUser", function(req, res){
             json_data.AuthToken = token;
 
             // Temporary cos we no school data
-            json_data.School = 'National University of Singapore'; 
+            json_data.School = 'National University of Singapore';
 
             // Can send directly to create new user
             request.post('/userManagement/createUserDB').form(json_data);
@@ -24,7 +24,7 @@ router.post("/createUser", function(req, res){
             throw error;
         }
     });
-};
+});
 
 /* Function to get modules */
 function getUserModules(token) {
@@ -40,12 +40,12 @@ function getUserModules(token) {
                 for (i = 0; i < json_data.length; i++) {
                     module_codes.push(json_data[i].CourseCode);
                 }
-                
+
                 console.log(module_codes);
             } else {
                 throw error;
             }
-        }); 
+        });
 }
 
 router.post("/createUserDB", function(req, res){
