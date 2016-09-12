@@ -1,19 +1,21 @@
 "use strict"
 
-angular.module("schoolines").controller("indexController", ["$scope", "$location", "$routeParams", "$window", "IVLEService", "Session", 
-	function($scope, $location, $routeParams, $window, IVLEService, Session) {
+angular.module("schoolines").controller("indexController", ["$scope", "$location", "$routeParams", "$window", "IVLEService", "DeadlineService", "Session", 
+	function($scope, $location, $routeParams, $window, IVLEService, DeadlineService, Session) {
     $scope.title = "this is schoolines app";
     $scope.link = function(){
-    	console.log("haha");
     	$window.location.href = IVLEService.getLoginUrl();
     }
 
     // Save token to session
     if ($routeParams.token) {
+    	$location.url('/');
     	Session.create($routeParams.token);
-    	IVLEService.getUserInfo(Session.token);
+    	IVLEService.createUser(Session.token);
+    	IVLEService.getModules(Session.token);
+        DeadlineService.getDeadline();
     }
-
+    
     // Create a new user
 
 }]);

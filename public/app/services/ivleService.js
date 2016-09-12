@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("schoolines").factory("IVLEService", function($http, $location, $httpParamSerializer){
+angular.module("schoolines").factory("IVLEService", function($http, $location, $httpParamSerializer, Session){
     var ivleService = {};
     const ivle_api_key = "UY5RaT4yK3lgWflM47CJo";
 
@@ -13,49 +13,20 @@ angular.module("schoolines").factory("IVLEService", function($http, $location, $
     	return loginLink + params;
     }
 
-    /* Get User Profile Data */
-    ivleService.getUserInfo = function(token) {
-        var profileLink = "https://ivle.nus.edu.sg/api/Lapi.svc/Profile_View?";
-        var params = $httpParamSerializer({APIKey: ivle_api_key, AuthToken: token});
-        $http.get(profileLink + params).then(function(response) {
-            console.log(response);
-            if (response.statusCode == 200) {
-                var json_data = JSON.parse(body).Results[0];
-                json_data.AuthToken = token;
+    /* Create User */
+    ivleService.createUser = function(token) {
+        $http.post('/userManagement/createUser', {token: token});
+    }
 
-                // Temporary cos we no school data
-                json_data.School = 'National University of Singapore'; 
-
-                // Can send directly to create new user
-                // request.post(req.protocol + '://' + req.get('host') + '/api/createUser').form(json_data);
-                console.log(json_data);
-            } else {
-                throw error;
-            }
-        });
-    };
-
-    // /* Function to get modules */
-    // ivleService.getUserModules = function(token) {
-    //     var profileLink = "https://ivle.nus.edu.sg/api/Lapi.svc/Modules?";
-    //     var args = querystring.stringify({APIKey: ivle_api_key, AuthToken: token});
-    //     request(profileLink + args, function(error, response, body) {
-    //             if (!error && response.statusCode == 200) {
-    //                 var json_data = JSON.parse(body).Results;
-
-    //                 // Can send directly to create new user
-    //                 // request.post(req.protocol + '://' + req.get('host') + '/api/createUser').form(json_data);
-    //                 var module_codes = [];
-    //                 for (i = 0; i < json_data.length; i++) {
-    //                     module_codes.push(json_data[i].CourseCode);
-    //                 }
-                    
-    //                 console.log(module_codes);
-    //             } else {
-    //                 throw error;
-    //             }
-    //         }); 
-    // }
+    /* Get Modules */
+    ivleService.getModules = function(token) {
+        $http.post('/userManagement/getModules', {token: token}).then(
+            function successCallback(response) {
+                Session.saveModules(response.data);
+            }, function errorCallback(response) {
+                console.log("Encountered Error: ", response.statusText);
+            }); 
+    }
 
     return ivleService;
 });
