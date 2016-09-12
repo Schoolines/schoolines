@@ -11,7 +11,6 @@ var userManagement = require('./routes/userManagement');
 var voteManagement = require('./routes/voteManagement');
 var expManagement = require('./routes/expManagement');
 
-
 var app = express();
 
 // view engine setup
@@ -29,7 +28,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/deadlineManagement', deadlineManagement);
 app.use('/userManagement', userManagement);
-app.use('/voteManagement', voteMangement);
+app.use('/voteManagement', voteManagement);
 app.use('/expManagement', expManagement);
 // error handlers
 

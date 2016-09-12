@@ -12,8 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       authToken: {
-        type: Sequelize.TEXT,
-        unique: true
+        type: Sequelize.TEXT
       },
       faculty: {
         type: Sequelize.STRING
