@@ -1,6 +1,6 @@
 'use strict';
-angular.module("schoolines").controller('indexController', ["$scope", "$timeout", "$mdSidenav", "$log", "$location", "$routeParams", "$window", "IVLEService", "Session",
-        function($scope, $timeout, $mdSidenav, $log, $location, $routeParams, $window, IVLEService, Session) {
+angular.module("schoolines").controller('indexController', ["$scope", "$timeout", "$mdSidenav", "$log", "$location", "$routeParams", "$window", "IVLEService", "DeadlineService", "Session",
+        function($scope, $timeout, $mdSidenav, $log, $location, $routeParams, $window, IVLEService, DeadlineService, Session) {
 			$scope.title = "this is schoolines app";
 		    $scope.link = function(){
 		    	$window.location.href = IVLEService.getLoginUrl();
