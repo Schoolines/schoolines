@@ -19,7 +19,7 @@ angular.module("schoolines").factory("DeadlineService", function($http, $httpPar
         // Session NOT WORKING
         var moduleCodes = Session.modules;
         //var moduleCodes = ['BT1101', 'MA1101R', 'MKT1003X'];
-        $http.get('/deadlineManagement/getDeadlines?' + $httpParamSerializer(moduleCodes)).then(
+        return $http.get('/deadlineManagement/getDeadlines?' + $httpParamSerializer(moduleCodes)).then(
             function successCallback(response) {
                 $localStorage.deadlines = response.data;
             }, function errorCallback(response) {

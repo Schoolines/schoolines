@@ -42,12 +42,9 @@ angular.module("schoolines")
                     DeadlineService.getDeadline();
                     $scope.deadlines = JSON.parse($localStorage.deadlines.deadlineArray);
                     for(var d of $scope.deadlines){
-
-                        console.log(d);
                         // TODO change color
                         d.color = "red";
                     }
-                    console.log($scope.deadlines);
                 });
             });
 
