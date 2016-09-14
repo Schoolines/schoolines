@@ -26,10 +26,10 @@ router.get("/getDeadlines", function(req, res) {
         var deadlineArray = [];
         for (var deadline of allDeadlines) {
             deadlineArray.push({
-                title: deadline.Deadline.title,
-                description: deadline.Deadline.description,
-                module: deadline.Deadline.module,
-                due: deadline.Deadline.title
+                title: deadline.title,
+                description: deadline.description,
+                module: deadline.module,
+                due: deadline.due
             });
         }
 
