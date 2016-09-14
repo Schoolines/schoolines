@@ -12,7 +12,7 @@ schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider",
             controller: "indexController",
             resolve: {
                 isAuthenticated: function(AuthService) {
-                    return AuthService.isAuthenticated();
+                    // return AuthService.isAuthenticated();
                 }
             }
         }).

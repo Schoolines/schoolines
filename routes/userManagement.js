@@ -23,7 +23,7 @@ router.post("/createUser", function(req, res, next){
             // Can send directly to create new user
             request.post({url: createUserUrl, form: json_data},
                 function(err, httpResponse, body){
-                    res.sendStatus(httpResponse.statusCode);
+                    res.sendStatus(200);
                 });
 
         } else {

@@ -17,14 +17,14 @@ angular.module("schoolines").factory("DeadlineService", function($http, $httpPar
     /* Get Deadline */
     deadlineService.getDeadline = function() {
         // Session NOT WORKING
-        // var moduleCodes = Session.moduleCodes;
-        var moduleCodes = ['BT1101', 'MA1101R', 'MKT1003X'];
+        var moduleCodes = Session.modules;
+        //var moduleCodes = ['BT1101', 'MA1101R', 'MKT1003X'];
         $http.get('/deadlineManagement/getDeadlines?' + $httpParamSerializer(moduleCodes)).then(
             function successCallback(response) {
                 console.log(response.data);
             }, function errorCallback(response) {
                 console.log("Encountered Error: ", response.statusText);
-            }); 
+            });
     }
 
 

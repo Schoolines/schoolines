@@ -1,6 +1,6 @@
 'use strict';
-angular.module("schoolines").controller('indexController', ["$scope", "$timeout", "$mdSidenav", "$log", "$location", "$routeParams", "$window", "IVLEService", "DeadlineService", "Session",
-        function($scope, $timeout, $mdSidenav, $log, $location, $routeParams, $window, IVLEService, DeadlineService, Session) {
+angular.module("schoolines").controller('indexController', ["$scope", "$timeout", "$mdSidenav", "$log","$location", "$routeParams", "$window", "IVLEService", "DeadlineService","AuthService", "Session",
+        function($scope, $timeout, $mdSidenav, $log, $location, $routeParams, $window, IVLEService, DeadlineService,AuthService, Session) {
 			$scope.title = "this is schoolines app";
 		    $scope.link = function(){
 		    	$window.location.href = IVLEService.getLoginUrl();
@@ -8,11 +8,14 @@ angular.module("schoolines").controller('indexController', ["$scope", "$timeout"
 
 		    // Save token to session
 		    if ($routeParams.token) {
-		    	$location.url('/');
-		    	Session.create($routeParams.token);
+		    	//$location.url('/');
+                AuthService.login($routeParams.token);
 		    	IVLEService.createUser(Session.token);
-		    	IVLEService.getModules(Session.token);
-		        DeadlineService.getDeadline();
+		    	IVLEService.getModules(Session.token).then(function(){
+                    DeadlineService.getDeadline();
+                });
+
+
 		    }
 
 
@@ -35,6 +38,7 @@ angular.module("schoolines").controller('indexController', ["$scope", "$timeout"
                 "desc": "13/9/2016",
                 "color": "#CDDC39"
             }];
+
             $scope.toggleLeft = buildDelayedToggler('left');
             /**
              * Supplies a function that will continue to operate until the

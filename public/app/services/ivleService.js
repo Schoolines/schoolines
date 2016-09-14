@@ -15,17 +15,19 @@ angular.module("schoolines").factory("IVLEService", function($http, $location, $
 
     /* Create User */
     ivleService.createUser = function(token) {
-        $http.post('/userManagement/createUser', {token: token});
+        return $http.post('/userManagement/createUser', {token: token}).then(function(res){
+            return res.data;
+        });
     }
 
     /* Get Modules */
     ivleService.getModules = function(token) {
-        $http.post('/userManagement/getModules', {token: token}).then(
+        return $http.post('/userManagement/getModules', {token: token}).then(
             function successCallback(response) {
-                Session.saveModules(response.data);
+                return Session.saveModules(response.data);
             }, function errorCallback(response) {
                 console.log("Encountered Error: ", response.statusText);
-            }); 
+            });
     }
 
     return ivleService;
