@@ -9,9 +9,9 @@ angular.module("schoolines")
                 console.log(IVLEService.getLoginUrl());
                     // Save token to session
                 if ($routeParams.token) {
-                    //$location.url('/');
+                    $location.url('/');
                     AuthService.login($routeParams.token);
-                    //IVLEService.createUser(Session.token);
+                    IVLEService.createUser(Session.token);
                     console.log(Session.userId);
                     IVLEService.getModules(Session.token).then(function() {
                         $scope.deadlines = DeadlineService.getDeadline();

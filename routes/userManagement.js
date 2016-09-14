@@ -18,6 +18,7 @@ router.post("/createUser", function(req, res, next) {
 
         if (!error && response.statusCode == 200) {
             var json_data = JSON.parse(body).Results[0];
+            console.log('JSONHERE', json_data);
             json_data.AuthToken = req.body.token;
             // Temporary cos we no school data
             json_data.School = 'National University of Singapore';
