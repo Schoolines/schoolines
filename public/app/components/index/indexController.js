@@ -12,7 +12,7 @@ angular.module("schoolines").controller('indexController', ["$scope", "$timeout"
                 AuthService.login($routeParams.token);
 		    	IVLEService.createUser(Session.token);
 		    	IVLEService.getModules(Session.token).then(function(){
-                    DeadlineService.getDeadline();
+                    $scope.deadlines = DeadlineService.getDeadline();
                 });
 
 
