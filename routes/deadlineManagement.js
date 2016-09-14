@@ -24,12 +24,16 @@ router.get("/getDeadlines", function(req, res) {
         }),
     ]).spread(function(allDeadlines) {
         var deadlineArray = [];
+        var convertDate = function(date){
+            var d = new Date(date);
+            return d.getDate()+'/'+d.getMonth()+'/'+d.getFullYear();
+        }
         for (var deadline of allDeadlines) {
             deadlineArray.push({
                 title: deadline.title,
-                description: deadline.description,
+                des: deadline.description,
                 module: deadline.module,
-                due: deadline.due
+                date: convertDate(deadline.due)
             });
         }
         console.log(deadlineArray);

@@ -35,31 +35,41 @@ angular.module("schoolines")
 
             };
         })
-        .controller("deadlineCtrl", function($mdSidenav, $scope,$timeout, $log, AuthService, IVLEService, Session, DeadlineService) {
+        .controller("deadlineCtrl", function($mdSidenav, $scope,$timeout, $log, AuthService, IVLEService, Session, DeadlineService, $localStorage) {
             AuthService.autologin().then(function(){
+
                 IVLEService.getModules(Session.token).then(function() {
-                    $scope.deadlines = DeadlineService.getDeadline();
+                    DeadlineService.getDeadline();
+                    $scope.deadlines = JSON.parse($localStorage.deadlines.deadlineArray);
+                    for(var d of $scope.deadlines){
+
+                        console.log(d);
+                        // TODO change color
+                        d.color = "red";
+                    }
+                    console.log($scope.deadlines);
                 });
             });
-                $scope.deadlines = [{
-                    "module": "cs3216",
-                    "date": "2016/9/12",
-                    "title": "some title",
-                    "desc": "some desc",
-                    "color": "#FFEB3B"
-                }, {
-                    "module": "cs3234",
-                    "date": "2016/9/12",
-                    "title": "another title",
-                    "desc": "another desc",
-                    "color": "#CDDC39"
-                }, {
-                    "module": "cs3234",
-                    "date": "2016/9/12",
-                    "title": "hw2",
-                    "desc": "13/9/2016",
-                    "color": "#CDDC39"
-                }];
+
+                // $scope.deadlines = [{
+                //     "module": "cs3216",
+                //     "date": "2016/9/12",
+                //     "title": "some title",
+                //     "desc": "some desc",
+                //     "color": "#FFEB3B"
+                // }, {
+                //     "module": "cs3234",
+                //     "date": "2016/9/12",
+                //     "title": "another title",
+                //     "desc": "another desc",
+                //     "color": "#CDDC39"
+                // }, {
+                //     "module": "cs3234",
+                //     "date": "2016/9/12",
+                //     "title": "hw2",
+                //     "desc": "13/9/2016",
+                //     "color": "#CDDC39"
+                // }];
 
                 $scope.toggleLeft = buildDelayedToggler('left');
                 /**
