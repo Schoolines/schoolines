@@ -2,22 +2,25 @@
 angular.module("schoolines")
     .controller('indexController', ["$scope", "$timeout", "$mdSidenav", "$log", "$location", "$routeParams", "$window", "IVLEService", "DeadlineService", "AuthService", "Session",
             function($scope, $timeout, $mdSidenav, $log, $location, $routeParams, $window, IVLEService, DeadlineService, AuthService, Session) {
-                $scope.title = "this is schoolines app";
+                AuthService.autologin().then(function(){
+                    console.log(Session.token);
+                    console.log(Session.userId);
+                });
                 $scope.link = function() {
                         $window.location.href = IVLEService.getLoginUrl();
                     }
-                console.log(IVLEService.getLoginUrl());
                     // Save token to session
+                    // first time log in
                 if ($routeParams.token) {
                     $location.url('/');
-                    AuthService.login($routeParams.token);
                     IVLEService.createUser(Session.token);
-                    console.log(Session.userId);
-                    IVLEService.getModules(Session.token).then(function() {
-                        $scope.deadlines = DeadlineService.getDeadline();
+
+                    AuthService.login($routeParams.token);
+                    IVLEService.createUser(Session.token).then(function(){
+                        var userId = Session.userId;
+
+                        $location.url('/');
                     });
-
-
                 }
 
 
@@ -32,8 +35,12 @@ angular.module("schoolines")
 
             };
         })
-        .controller("deadlineCtrl", function($mdSidenav, $scope, $log) {
-
+        .controller("deadlineCtrl", function($mdSidenav, $scope,$timeout, $log, AuthService, IVLEService, Session, DeadlineService) {
+            AuthService.autologin().then(function(){
+                IVLEService.getModules(Session.token).then(function() {
+                    $scope.deadlines = DeadlineService.getDeadline();
+                });
+            });
                 $scope.deadlines = [{
                     "module": "cs3216",
                     "date": "2016/9/12",
