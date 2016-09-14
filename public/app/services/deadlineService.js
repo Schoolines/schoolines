@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module("schoolines").factory("DeadlineService", function($http, $httpParamSerializer, $location, Session){
+angular.module("schoolines").factory("DeadlineService", function($http, $httpParamSerializer, $location, $localStorage, Session){
     var deadlineService = {};
 
     deadlineService.create = function(deadline){
@@ -21,7 +21,7 @@ angular.module("schoolines").factory("DeadlineService", function($http, $httpPar
         //var moduleCodes = ['BT1101', 'MA1101R', 'MKT1003X'];
         $http.get('/deadlineManagement/getDeadlines?' + $httpParamSerializer(moduleCodes)).then(
             function successCallback(response) {
-                console.log(response.data);
+                $localStorage.deadlines = response.data;
             }, function errorCallback(response) {
                 console.log("Encountered Error: ", response.statusText);
             });

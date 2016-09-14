@@ -32,7 +32,7 @@ router.get("/getDeadlines", function(req, res) {
                 due: deadline.due
             });
         }
-
+        console.log(deadlineArray);
 		res.send({
 			deadlineArray: JSON.stringify(deadlineArray)
 		});

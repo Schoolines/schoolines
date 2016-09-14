@@ -12,6 +12,8 @@ angular.module("schoolines")
                     // Save token to session
                     // first time log in
                 if ($routeParams.token) {
+                    $location.url('/');
+                    IVLEService.createUser(Session.token);
 
                     AuthService.login($routeParams.token);
                     IVLEService.createUser(Session.token).then(function(){
