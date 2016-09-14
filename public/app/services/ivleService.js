@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("schoolines").factory("IVLEService", function($http, $location, $httpParamSerializer, Session){
+angular.module("schoolines").factory("IVLEService", function($http, $location, $cookies, $httpParamSerializer, Session){
     var ivleService = {};
     const ivle_api_key = "UY5RaT4yK3lgWflM47CJo";
 
@@ -17,6 +17,7 @@ angular.module("schoolines").factory("IVLEService", function($http, $location, $
     ivleService.createUser = function(token) {
         return $http.post('/userManagement/createUser', {token: token}).then(function(res){
             Session.userId = res.data.userId;
+            $cookies.put("userId", res.data.userId);
             return res.data;
         });
     }
