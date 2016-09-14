@@ -11,7 +11,6 @@ router.post("/create", function(req, res){
 
 /* Get Deadlines given a list of module codes */
 router.get("/getDeadlines", function(req, res) {
-	console.log(req.query);
 	var modules = [];
 	for (i in req.query) {
 		modules.push(req.query[i]);
@@ -34,7 +33,6 @@ router.get("/getDeadlines", function(req, res) {
             });
         }
 
-        console.log(deadlineArray);
 		res.send({
 			deadlineArray: JSON.stringify(deadlineArray)
 		});

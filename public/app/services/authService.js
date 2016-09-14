@@ -15,6 +15,7 @@ angular.module("schoolines").factory("AuthService", function($http, $location, $
     authService.login = function(token){
 		Session.create(token);
         $cookies.put(token, token);
+        Session.isLoggedIn = true;
     };
     return authService;
 });

@@ -4,7 +4,7 @@ angular.module("schoolines").factory("DeadlineService", function($http, $httpPar
     var deadlineService = {};
 
     deadlineService.create = function(deadline){
-        // deadline["contributorId"] = Session.userId;
+        deadline["userId"] = Session.userId;
         var postParam = {
             deadline: deadline
         }
