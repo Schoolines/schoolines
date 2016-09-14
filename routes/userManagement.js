@@ -67,7 +67,7 @@ router.post("/createUser", function(req, res, next) {
                     console.log("user already exists");
                     res.status(201).send({
                         status: "exist",
-                        userId: user.id;
+                        userId: user.id
                     })
                 }
             });
