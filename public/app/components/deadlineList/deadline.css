@@ -1,0 +1,44 @@
+.circle-gt-md{
+	height:100px !important; 
+	line-height: 100px !important;
+	width:100px !important;
+	border-radius:50%;
+	text-align: center;
+	vertical-align: middle;  
+	margin:10px;
+}
+.logo{
+	height:80px !important; 
+	margin-top:20px;
+}
+.logo-mobile{
+	height:50px !important; 
+	
+	margin-top:20px;
+}
+.circle{
+	height:50px !important; 
+	line-height: 50px !important;
+	width:50px !important;
+	border-radius:50%;
+	text-align: center;
+	vertical-align: middle;  
+	margin:5px;
+}
+.space-between{
+	margin-bottom:5px;
+}
+
+.height-150{
+	height:20px !important;
+}
+
+.drawer-icon{
+	height:25px;
+	width:25px;
+	margin-top:10px;
+}
+
+.full-height{
+	height:100vh;
+}
