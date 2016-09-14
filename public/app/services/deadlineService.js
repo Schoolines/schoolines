@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module("schoolines").factory("DeadlineService", function($http, $httpParamSerializer, $location, UserService, Session){
+angular.module("schoolines").factory("DeadlineService", function($http, $httpParamSerializer, $location, Session){
     var deadlineService = {};
 
     deadlineService.create = function(deadline){

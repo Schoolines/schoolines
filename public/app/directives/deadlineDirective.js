@@ -3,6 +3,6 @@ angular.module("schoolines").directive('deadline', function() {
 	return {
 		restrict: 'E',
 		templateUrl: '/app/directives/deadline.html',
-		controller: 'indexController'
+		controller: 'deadlineCtrl'
 	}
 });

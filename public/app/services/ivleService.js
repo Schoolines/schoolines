@@ -16,6 +16,7 @@ angular.module("schoolines").factory("IVLEService", function($http, $location, $
     /* Create User */
     ivleService.createUser = function(token) {
         return $http.post('/userManagement/createUser', {token: token}).then(function(res){
+            Session.userId = res.data.userId;
             return res.data;
         });
     }
