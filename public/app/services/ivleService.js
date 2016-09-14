@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("schoolines").factory("IVLEService", function($http, $location, $cookies, $httpParamSerializer, Session){
+angular.module("schoolines").factory("IVLEService", function($http, $localStorage, $location, $cookies, $httpParamSerializer, $localStorage, Session){
     var ivleService = {};
     const ivle_api_key = "UY5RaT4yK3lgWflM47CJo";
 
@@ -18,6 +18,7 @@ angular.module("schoolines").factory("IVLEService", function($http, $location, $
         return $http.post('/userManagement/createUser', {token: token}).then(function(res){
             Session.userId = res.data.userId;
             $cookies.put("userId", res.data.userId);
+            $localStorage.userId = res.data.userId;
             return res.data;
         });
     }
@@ -26,7 +27,7 @@ angular.module("schoolines").factory("IVLEService", function($http, $location, $
     ivleService.getModules = function(token) {
         return $http.post('/userManagement/getModules', {token: token}).then(
             function successCallback(response) {
-                return Session.saveModules(response.data);
+                $localStorage.modules = response.data;
             }, function errorCallback(response) {
                 console.log("Encountered Error: ", response.statusText);
             });

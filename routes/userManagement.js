@@ -23,17 +23,6 @@ router.post("/createUser", function(req, res, next) {
             // Temporary cos we no school data
             json_data.School = 'National University of Singapore';
 
-            // var createUserUrl = req.protocol + '://' + req.get('host') + '/userManagement/createUserDB';
-            // // Can send directly to create new user
-            // request.post({
-            //         url: createUserUrl,
-            //         form: json_data
-            //     },
-            //     function(err, httpResponse, body) {
-            //         console.log(body);
-            //         res.sendStatus(200);
-            //     });
-
             models.User.findOne({
                 where: {
                     matricNumber: json_data.UserID

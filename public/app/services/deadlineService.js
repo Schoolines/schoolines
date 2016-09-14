@@ -16,15 +16,17 @@ angular.module("schoolines").factory("DeadlineService", function($http, $httpPar
 
     /* Get Deadline */
     deadlineService.getDeadline = function() {
-        // Session NOT WORKING
-        var moduleCodes = Session.modules;
-        //var moduleCodes = ['BT1101', 'MA1101R', 'MKT1003X'];
-        return $http.get('/deadlineManagement/getDeadlines?' + $httpParamSerializer(moduleCodes)).then(
-            function successCallback(response) {
-                $localStorage.deadlines = response.data;
-            }, function errorCallback(response) {
-                console.log("Encountered Error: ", response.statusText);
-            });
+        var moduleCodes = $localStorage.modules;
+        if (moduleCodes) {
+            return $http.get('/deadlineManagement/getDeadlines?' + $httpParamSerializer(moduleCodes)).then(
+                function successCallback(response) {
+                    $localStorage.deadlines = response.data;
+                }, function errorCallback(response) {
+                    console.log("Encountered Error: ", response.statusText);
+                });
+        } else {
+            console.log("No module codes in localStorage");
+        }
     }
 
 
