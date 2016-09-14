@@ -11,7 +11,7 @@ module.exports = {
       upVote: {
         type: Sequelize.BOOLEAN
       },
-      voterId: {
+      userId: {
         type: Sequelize.INTEGER,
         references: {
             model: "Users",

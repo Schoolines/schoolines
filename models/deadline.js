@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
           Deadline.belongsTo(models.User, {
               onDelete: "CASCADE",
               onUpdate: "CASCADE",
-              foreignKey: "contributorId"
+              foreignKey: "userId"
           });
       }
     }

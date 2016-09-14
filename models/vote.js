@@ -7,7 +7,7 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
           Vote.belongsTo(models.User, {
               onUpdate: "CASCADE",
-              foreignKey: "voterId"
+              foreignKey: "userId"
           });
 
           Vote.belongsTo(models.Deadline, {
