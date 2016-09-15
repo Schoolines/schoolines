@@ -42,28 +42,6 @@ angular.module("schoolines").directive("deadline", function() {
                 });
             });
 
-
-
-            // $scope.deadlines = [{
-            //     "module": "cs3216",
-            //     "date": "2016/9/12",
-            //     "title": "some title",
-            //     "desc": "some desc",
-            //     "color": "#FFEB3B"
-            // }, {
-            //     "module": "cs3234",
-            //     "date": "2016/9/12",
-            //     "title": "another title",
-            //     "desc": "another desc",
-            //     "color": "#CDDC39"
-            // }, {
-            //     "module": "cs3234",
-            //     "date": "2016/9/12",
-            //     "title": "hw2",
-            //     "desc": "13/9/2016",
-            //     "color": "#CDDC39"
-            // }];
-
             $scope.close = function() {
                 // Component lookup should always be available since we are not using `ng-if`
                 $mdSidenav('left').close()

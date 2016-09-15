@@ -6,9 +6,6 @@ angular.module("schoolines")
                     console.log(Session.token);
                     console.log(Session.userId);
                 });
-                $scope.link = function() {
-                        $window.location.href = IVLEService.getLoginUrl();
-                    }
                     // Save token to session
                     // first time log in
                 // if ($routeParams.token) {

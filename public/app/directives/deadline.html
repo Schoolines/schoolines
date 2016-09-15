@@ -1,8 +1,8 @@
 
 
-<div ng-controller="deadlineCtrl">
+<div>
 
-	
+
 	<!--browser size-->
 	<div hide show-gt-md layout="row">
 		<div layout="column" class="full-height">
@@ -17,7 +17,7 @@
 						<md-list-item ng-repeat="mod in modules"  ng-click="filter(mod)">
 							<p class="md-title"layout="row">{{mod}}</p>
 						</md-list-item>
-						
+
 					</md-list>
 			  </md-content>
 			</md-sidenav>
@@ -25,18 +25,18 @@
 		<div layout="column" flex>
 			<md-toolbar   class="md-hue-3">
 			  <div class="md-toolbar-tools">
-				<span flex></span><span><img onClick='window.location="/";' class="logo" src="/browser/image/logo.png"/></span><span flex></span>
+				<span flex></span><span><img onClick='window.location="/";' class="logo" src="/images/logo.png"/></span><span flex></span>
 			  </div>
 			</md-toolbar>
 
 			<md-content>
 			  <md-list flex>
-				
+
 				<md-list-item  ng-repeat="item in deadlines" ng-click="null" >
 				  <span class="circle-gt-md md-title" style="background-color:{{item.color}}" >{{ item.module }}</span>
 				  <div class="md-list-item-text" layout="column">
 					<p class="md-title">{{ item.title }}</p>
-					<p class="md-subhead">Contributed by: {{ item.cont }}</p>
+					<p class="md-subhead">Contributor: {{ item.contributor }}</p>
 				  </div><span flex></span>
 				  <div layout="column">
 					<p class="md-title">{{ item.date}}</p>
@@ -46,7 +46,7 @@
 			</md-content>
 			</div>
 	</div>
-	
+
 	<!--mobile size-->
 	<div hide-gt-md layout="row">
 		<div layout="column">
@@ -56,8 +56,8 @@
 				md-is-locked-open="$mdMedia('gt-md')"
 				md-whiteframe="4">
 
-			  
-			  <md-content layout-padding ng-controller="LeftCtrl">
+
+			  <md-content layout-padding>
 				<md-list flex>
 
 
@@ -66,33 +66,32 @@
 
 					</md-list-item>
 			  </md-content>
-				
-				
+
+
 			</md-sidenav>
 		</div>
 		<div layout="column" flex>
 			<md-toolbar   class="md-hue-3 height-150">
 			  <div class="md-toolbar-tools">
-				<img class="drawer-icon" src="/browser/image/drawer.png" ng-click="toggleLeft()"/>
-				<span flex></span><span><img onClick='window.location="/";' class="logo" src="/browser/image/logo.png"/></span><span flex></span>
+				<img class="drawer-icon" src="images/drawer.png" ng-click="toggleLeft()"/>
+				<span flex></span><span><img onClick='window.location="/";' class="logo" src="images/logo.png"/></span><span flex></span>
 			  </div>
 			</md-toolbar>
-			
+
 			<md-content>
 			  <md-list flex>
-				
+
 				<md-list-item  ng-repeat="item in deadlines" ng-click="null" >
 				  <span class="circle title" style="background-color:{{item.color}}" >{{ item.module }}</span>
 				  <div class="md-list-item-text" layout="column" flex>
 					<md-list-item class="md-title"><span>{{ item.title }}</span><span flex></span><span class="md-body-1">{{ item.date}}</span></md-list-item>
-					<md-list-item class="md-body-1">Contributor: {{ item.cont }}</md-list-item>
+					<md-list-item class="md-body-1">Contributor: {{ item.contributor }}</md-list-item>
 				  </div>
-				  
+
 				</md-list-item>
 			  </md-list>
 			</md-content>
 		</div>
 	</div>
-	<navbar onClick='window.location="#/add";' class="action-button"></navbar>
-</div>
 
+</div>
