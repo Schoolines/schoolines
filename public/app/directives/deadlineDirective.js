@@ -10,14 +10,16 @@ angular.module("schoolines").directive("deadline", function() {
 
                 IVLEService.getModules(Session.token).then(function() {
                     $scope.modules = $localStorage.modules;
-                    DeadlineService.getDeadline();
-                    $scope.deadlines = JSON.parse($localStorage.deadlines.deadlineArray);
-                    console.log($scope.deadlines);
-                    for (var d of $scope.deadlines) {
-                        // TODO change color
-                        console.log(d.date);
-                        d.color = "red";
-                    }
+                    DeadlineService.getDeadline().then(function(){
+                        $scope.deadlines = JSON.parse($localStorage.deadlines.deadlineArray);
+                        console.log($scope.deadlines);
+                        for (var d of $scope.deadlines) {
+                            // TODO change color
+                            console.log(d.date);
+                            d.color = "red";
+                        }
+                    });
+
                 });
             });
 

@@ -13,7 +13,7 @@ angular.module("schoolines").factory("AuthService", function($http, $location, $
             return $q.resolve();
         }else if($routeParams.token){
             this.login($routeParams.token);
-
+            return $q.resolve();
         }else{
             $window.location.href = IVLEService.getLoginUrl();
         }
