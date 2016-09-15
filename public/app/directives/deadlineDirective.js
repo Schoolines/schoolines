@@ -28,6 +28,7 @@ angular.module("schoolines").directive("deadline", function() {
                                     d.push(deadline);
                             }
                             $scope.deadlines = d;
+                            $scope.close();
                         }
 
                         for (var d of $scope.deadlines) {
