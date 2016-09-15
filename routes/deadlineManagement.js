@@ -38,7 +38,6 @@ router.get("/getDeadlines", function(req, res) {
                 contributor: deadline.User.name
             });
         }
-        console.log(deadlineArray);
 		res.send({
 			deadlineArray: JSON.stringify(deadlineArray)
 		});
