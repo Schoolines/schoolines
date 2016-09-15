@@ -1,28 +1,29 @@
 .circle-gt-md{
-	height:100px !important; 
+	height:100px !important;
 	line-height: 100px !important;
 	width:100px !important;
 	border-radius:50%;
 	text-align: center;
-	vertical-align: middle;  
+	vertical-align: middle;
 	margin:10px;
 }
+
 .logo{
-	height:80px !important; 
+	height:80px !important;
 	margin-top:20px;
 }
 .logo-mobile{
-	height:50px !important; 
-	
+	height:50px !important;
+
 	margin-top:20px;
 }
 .circle{
-	height:50px !important; 
+	height:50px !important;
 	line-height: 50px !important;
 	width:50px !important;
 	border-radius:50%;
 	text-align: center;
-	vertical-align: middle;  
+	vertical-align: middle;
 	margin:5px;
 }
 .space-between{

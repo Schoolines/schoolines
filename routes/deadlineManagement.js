@@ -31,6 +31,7 @@ router.get("/getDeadlines", function(req, res) {
         }
         for (var deadline of allDeadlines) {
             deadlineArray.push({
+                id: deadline.id,
                 title: deadline.title,
                 des: deadline.description,
                 module: deadline.module,

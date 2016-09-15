@@ -4,8 +4,8 @@ angular.module("schoolines").directive("deadline", function() {
     return {
         restrict: "AE",
         templateUrl: "/app/directives/deadline.html",
-        controller: ["$mdSidenav", "$scope", "$timeout", "$log", "AuthService", "IVLEService", "Session", "DeadlineService", "$localStorage",
-        function($mdSidenav, $scope, $timeout, $log, AuthService, IVLEService, Session, DeadlineService, $localStorage) {
+        controller: ["$mdSidenav","$location", "$scope", "$timeout", "$log", "AuthService", "IVLEService", "Session", "DeadlineService", "$localStorage",
+        function($mdSidenav, $location, $scope, $timeout, $log, AuthService, IVLEService, Session, DeadlineService, $localStorage) {
             AuthService.autologin().then(function() {
 
                 IVLEService.getModules(Session.token).then(function() {
@@ -41,6 +41,11 @@ angular.module("schoolines").directive("deadline", function() {
 
                 });
             });
+
+            $scope.view = function(deadline){
+                DeadlineService.deadlineDetail = deadline;
+                $location.path('/deadlineDetail');
+            }
 
             $scope.close = function() {
                 // Component lookup should always be available since we are not using `ng-if`

@@ -2,6 +2,8 @@
 angular.module("schoolines")
     .controller('indexController', ["$scope", "$localStorage", "$timeout", "$mdSidenav", "$log", "$location", "$routeParams", "$window", "IVLEService", "DeadlineService", "AuthService", "Session",
             function($scope, $localStorage, $timeout, $mdSidenav, $log, $location, $routeParams, $window, IVLEService, DeadlineService, AuthService, Session) {
+                $scope.title = "Schoolines";
+
                 AuthService.autologin().then(function(){
                     console.log(Session.token);
                     console.log(Session.userId);
