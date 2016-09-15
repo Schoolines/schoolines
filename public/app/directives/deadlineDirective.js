@@ -9,13 +9,18 @@ angular.module("schoolines").directive("deadline", function() {
             AuthService.autologin().then(function() {
 
                 IVLEService.getModules(Session.token).then(function() {
-                    $scope.modules = $localStorage.modules;
+                    $scope.modules = ["All"];
+                    $scope.modules = $scope.modules.concat($localStorage.modules);
                     DeadlineService.getDeadline().then(function(){
 
                         var deadlines = JSON.parse($localStorage.deadlines.deadlineArray);
                         $scope.deadlines = deadlines;
 
                         $scope.filter = function(mod){
+                            if(mod == "All"){
+                                $scope.deadlines = deadlines;
+                                return ;
+                            }
                             var d = [];
                             for(var deadline of deadlines){
                                 if(deadline.module == mod)
