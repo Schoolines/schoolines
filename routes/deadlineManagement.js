@@ -20,7 +20,8 @@ router.get("/getDeadlines", function(req, res) {
         models.Deadline.findAll({
             where: {
                 module: modules,
-            }
+            },
+            include: [models.User]
         }),
     ]).spread(function(allDeadlines) {
         var deadlineArray = [];
@@ -33,7 +34,8 @@ router.get("/getDeadlines", function(req, res) {
                 title: deadline.title,
                 des: deadline.description,
                 module: deadline.module,
-                date: convertDate(deadline.due)
+                date: convertDate(deadline.due),
+                contributor: deadline.User.name
             });
         }
         console.log(deadlineArray);

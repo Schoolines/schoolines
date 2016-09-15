@@ -12,6 +12,7 @@ angular.module("schoolines").directive("deadline", function() {
                     $scope.modules = $localStorage.modules;
                     DeadlineService.getDeadline();
                     $scope.deadlines = JSON.parse($localStorage.deadlines.deadlineArray);
+                    console.log($scope.deadlines);
                     for (var d of $scope.deadlines) {
                         // TODO change color
                         console.log(d.date);
