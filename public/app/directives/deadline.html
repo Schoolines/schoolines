@@ -13,7 +13,7 @@
 				<md-content layout-padding>
 					<md-list flex>
 
-						<md-list-item ng-repeat="mod in modules" ng-click="null" >
+						<md-list-item ng-repeat="mod in modules"  ng-click="filter(mod)">
 							<p class="md-title"layout="row">{{mod}}</p>
 						</md-list-item>
 
@@ -59,7 +59,7 @@
 			  <md-content layout-padding>
 				<md-list flex>
 
-					<md-list-item ng-repeat="mod in modules" ng-click="null" >
+					<md-list-item ng-repeat="mod in modules" ng-click="filter(mod)" >
 						<p class="md-title"layout="row">{{mod}}</p>
 					</md-list-item>
 			  </md-content>

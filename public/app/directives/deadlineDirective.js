@@ -11,17 +11,31 @@ angular.module("schoolines").directive("deadline", function() {
                 IVLEService.getModules(Session.token).then(function() {
                     $scope.modules = $localStorage.modules;
                     DeadlineService.getDeadline().then(function(){
-                        $scope.deadlines = JSON.parse($localStorage.deadlines.deadlineArray);
-                        console.log($scope.deadlines);
+
+                        var deadlines = JSON.parse($localStorage.deadlines.deadlineArray);
+                        $scope.deadlines = deadlines;
+
+                        $scope.filter = function(mod){
+                            var d = [];
+                            for(var deadline of deadlines){
+                                if(deadline.module == mod)
+
+                                    d.push(deadline);
+                            }
+                            $scope.deadlines = d;
+                        }
+
                         for (var d of $scope.deadlines) {
                             // TODO change color
-                            console.log(d.date);
+
                             d.color = "red";
                         }
                     });
 
                 });
             });
+
+
 
             // $scope.deadlines = [{
             //     "module": "cs3216",
