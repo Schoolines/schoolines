@@ -1,7 +1,7 @@
-<div ng-controller="addCtrl">
+<div>
 	<md-toolbar   class="md-hue-3">
 		<div class="md-toolbar-tools">
-			<span flex></span><span><img class="logo" src="/browser/image/logo.png"/></span><span flex></span>
+			<span flex></span><span><img class="logo" src="/images/logo.png"/></span><span flex></span>
 		</div>
 	</md-toolbar>
 	<form name="userForm" class = "form-margin" ng-submit="createDeadline()">
@@ -9,8 +9,8 @@
 			<md-input-container class="md-block" flex>
 				<label>Module</label>
 				<md-select ng-model="deadline.module">
-				  <md-option ng-repeat="mod in modules" value="{{mod.code}}">
-					{{mod.code}}
+				  <md-option ng-repeat="mod in modules" value="{{mod}}">
+					{{mod}}
 				  </md-option>
 				</md-select>
 			</md-input-container>
@@ -20,22 +20,22 @@
 				<label>Title</label>
 				<input ng-model="deadline.title">
 			</md-input-container>
-		</div>	
+		</div>
 		<div layout="row">
-			
+
 			<md-input-container>
 				<label>Date</label>
-				<md-datepicker  ng-model="deadline.due"></md-datepicker>
+				<md-datepicker  ng-model="myDate"></md-datepicker>
 			</md-input-container>
 			<span flex></span>
 			<md-input-container class="time">
 				<label>Hour</label>
-				<input type="number" step="any" name="hour" ng-model="deadline.hour" min="0" max="24" ng-pattern="\d+" />
+				<input type="number" step="any" name="hour" ng-model="deadline.hour" min="0" max="24"/>
 			</md-input-container>
-			
+
 			<md-input-container class="time">
 				<label>Min</label>
-				<input type="number" step="any" name="min" ng-model="deadline.min" min="0" max="59" ng-pattern="\d+" />
+				<input type="number" step="any" name="min" ng-model="deadline.min" min="0" max="59" />
 			</md-input-container>
 		</div>
 		<div layout="row">

@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("schoolines").factory("IVLEService", function($http, $localStorage, $location, $cookies, $httpParamSerializer, $localStorage, Session){
+angular.module("schoolines").factory("IVLEService", function($http, $location, $cookies, $httpParamSerializer, $localStorage, Session){
     var ivleService = {};
     const ivle_api_key = "UY5RaT4yK3lgWflM47CJo";
 

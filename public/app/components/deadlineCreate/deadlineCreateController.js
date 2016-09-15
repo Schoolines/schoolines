@@ -1,17 +1,22 @@
 'use strict'
 
-angular.module("schoolines").controller("deadlineCreateController", ["$route", "$scope", "$location", "AuthService", "DeadlineService", "Session", "IVLEService",
-    function($route, $scope, $location, AuthService, DeadlineService, Session, IVLEService) {
+angular.module("schoolines").controller("deadlineCreateController",
+["$route", "$scope", "$location","$localStorage" ,"AuthService", "DeadlineService", "Session", "IVLEService",
+    function($route, $scope, $location,$localStorage, AuthService, DeadlineService, Session, IVLEService) {
         AuthService.autologin().then(function(){
             $scope.deadline = {};
             $scope.deadline.userId = Session.userId;
+            $scope.myDate = new Date();
         });
 
         IVLEService.getModules(Session.token).then(function(){
-            $scope.modules= Session.modules;
-            console.log($scope.modules);
+            $scope.modules= $localStorage.modules;
         });
         $scope.createDeadline = function(){
+            $scope.deadline.due = $scope.myDate;
+            $scope.deadline.due.setHours($scope.deadline.hour);
+            $scope.deadline.due.setMinutes($scope.deadline.min);
+            $scope.deadline.due = $scope.deadline.due.toString();
             DeadlineService.create($scope.deadline).then(function(res){
                 $route.reload();
                 $location.path('/');
