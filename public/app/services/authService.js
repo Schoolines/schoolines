@@ -15,7 +15,8 @@ angular.module("schoolines").factory("AuthService", function($http, $location, $
             this.login($routeParams.token);
             return $q.resolve();
         }else{
-            //$window.location.href = IVLEService.getLoginUrl();
+            $window.location.href = IVLEService.getLoginUrl();
+            return $q.resolve();
         }
     };
 
