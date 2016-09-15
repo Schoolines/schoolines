@@ -11,16 +11,16 @@ angular.module("schoolines")
                     }
                     // Save token to session
                     // first time log in
-                if ($routeParams.token) {
-                    IVLEService.createUser(Session.token);
-
-                    AuthService.login($routeParams.token);
-                    IVLEService.createUser(Session.token).then(function(){
-                        var userId = Session.userId;
-
-                        $location.url('/');
-                    });
-                }
+                // if ($routeParams.token) {
+                //     IVLEService.createUser(Session.token);
+                //
+                //     AuthService.login($routeParams.token);
+                //     IVLEService.createUser(Session.token).then(function(){
+                //         var userId = Session.userId;
+                //
+                //         $location.url('/');
+                //     });
+                // }
 
 
             }]);

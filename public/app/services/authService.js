@@ -4,7 +4,7 @@ angular.module("schoolines").factory("AuthService", function($http, $location, $
     var authService = {};
 
     authService.autologin = function(){
-        if(!!$cookies.get("token")){
+        if($cookies.get("token")){
             Session.create($cookies.get("token"));
             Session.userId = $cookies.get("userId");
 
@@ -20,10 +20,18 @@ angular.module("schoolines").factory("AuthService", function($http, $location, $
     };
 
     authService.login = function(token){
-		Session.create(token);
-        $cookies.put("token", token);
-        Session.isLoggedIn = true;
-        $localStorage.token = token;
+        Session.create(token);
+        IVLEService.createUser(Session.token).then(function(){
+            var userId = Session.userId;
+
+
+            $cookies.put("token", token);
+            Session.isLoggedIn = true;
+            $localStorage.token = token;
+
+            $location.url('/');
+        });
+
     };
     return authService;
 });
