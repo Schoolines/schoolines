@@ -19,6 +19,7 @@ angular.module("schoolines").directive("deadline", function() {
                         $scope.filter = function(mod){
                             if(mod == "All"){
                                 $scope.deadlines = deadlines;
+                                $scope.close();
                                 return ;
                             }
                             var d = [];
