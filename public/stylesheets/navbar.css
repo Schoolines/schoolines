@@ -1,4 +1,9 @@
 
+.action-button{
+position:fixed;
+bottom:10px;
+right:10px;
+}
 
 .bottomSheetdemoBasicUsage .md-inline-list-icon-label {
   display: inline-block;
@@ -34,4 +39,3 @@
 
 .bottomSheetdemoBasicUsage md-toast > * {
   font-weight: bolder; }
-
