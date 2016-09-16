@@ -1,6 +1,7 @@
 "use strict";
 
-angular.module("schoolines").factory("AuthService", function($http, $location, $cookies, IVLEService, Session, $window, $q, $routeParams, $localStorage){
+angular.module("schoolines").factory("AuthService",
+function($http, $location, $cookies, IVLEService, Session, $window, $q, $routeParams, $localStorage){
     var authService = {};
 
     authService.autologin = function(){
@@ -13,6 +14,9 @@ angular.module("schoolines").factory("AuthService", function($http, $location, $
             return $q.resolve();
         }else if($routeParams.token){
             this.login($routeParams.token);
+            return $q.resolve();
+        }else if($localStorage.token){
+            this.login($localStorage.token);
             return $q.resolve();
         }else{
             $window.location.href = IVLEService.getLoginUrl();
