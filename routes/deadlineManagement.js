@@ -27,7 +27,8 @@ router.get("/getDeadlines", function(req, res) {
         var deadlineArray = [];
         var convertDate = function(date){
             var d = new Date(date);
-            return d.getDate()+'/'+d.getMonth()+'/'+d.getFullYear() + " " +d.getHours() + ":" + d.getMinutes();
+            return d.getDate()+'/'+d.getMonth()+'/'+d.getFullYear() + " " +d.getHours() + ":" +
+            ((d.getMinutes() > 9 ) ? d.getMinutes() : d.getMinutes()+"0");
         }
         for (var deadline of allDeadlines) {
             deadlineArray.push({
