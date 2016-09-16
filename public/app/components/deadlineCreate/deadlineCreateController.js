@@ -12,6 +12,10 @@ angular.module("schoolines").controller("deadlineCreateController",
         IVLEService.getModules(Session.token).then(function(){
             $scope.modules= $localStorage.modules;
         });
+
+        $scope.redirectTo = function(url){
+            $location.path(url);
+        }
         $scope.createDeadline = function(){
             $scope.deadline.due = $scope.myDate;
             $scope.deadline.due.setHours($scope.deadline.hour);
