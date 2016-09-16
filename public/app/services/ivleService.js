@@ -30,7 +30,8 @@ angular.module("schoolines").factory("IVLEService", function($q, $http, $locatio
 
     /* Get Modules */
     ivleService.getModules = function(token) {
-        if ($localStorage.modules == null || $localStorage.modules.length > 0)
+        console.log($localStorage.modules);
+        if ($localStorage.modules != undefined && $localStorage.modules.length > 0)
             return $q.resolve();
         else
             return $http.post('/userManagement/getModules', {
