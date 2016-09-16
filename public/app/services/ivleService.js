@@ -2,7 +2,7 @@
 
 angular.module("schoolines").factory("IVLEService", function($q, $http, $location, $cookies, $httpParamSerializer, $localStorage, Session) {
     var ivleService = {};
-    const ivle_api_key = "UY5RaT4yK3lgWflM47CJo";
+    var ivle_api_key = "UY5RaT4yK3lgWflM47CJo";
 
     /* Login Function */
     ivleService.getLoginUrl = function() {
