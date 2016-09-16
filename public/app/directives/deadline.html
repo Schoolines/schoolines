@@ -1,65 +1,72 @@
 
 
-<div>
+<md-content layout="row">
 
 
 	<!--browser size-->
-	<div hide show-gt-md layout="row">
-		<div layout="column" class="full-height">
-			<md-sidenav
-        class="md-sidenav-left"
-        md-is-locked-open="$mdMedia('gt-md')"
-        md-whiteframe="4" flex>
-				<md-content layout-padding>
-					<md-list flex>
+	<md-content layout="column" hide show-gt-md class="full-height">
+		<md-sidenav
+	class="md-sidenav-left border"
+	md-is-locked-open="$mdMedia('gt-md')"
+	md-whiteframe="4" flex>
+		<md-toolbar   class="md-hue-3 toolbar">
+					  <div class="md-toolbar-tools">
+						<span flex></span><span>Filter</span><span flex></span>
+					  </div>
+				</md-toolbar>
+			<md-content layout-padding>
+				<md-list flex>
+					
+					<md-list-item ng-repeat="mod in modules"  ng-click="filter(mod)">
+						<p class="md-title"layout="row">{{mod}}</p>
+					</md-list-item>
 
+				</md-list>
+		  </md-content>
+		</md-sidenav>
+	</md-content>
+	<md-content hide show-gt-md  layout="column" flex>
+		<md-toolbar   class="md-hue-3 toolbar">
+		  <div class="md-toolbar-tools">
+			<span flex></span><span><img onClick='window.location="/";' class="logo" src="/images/logo.png"/></span><span flex></span>
+		  </div>
+		</md-toolbar>
 
-						<md-list-item ng-repeat="mod in modules"  ng-click="filter(mod)">
-							<p class="md-title"layout="row">{{mod}}</p>
-						</md-list-item>
+		<md-content>
+		  <md-list flex>
 
-					</md-list>
-			  </md-content>
-			</md-sidenav>
-		</div>
-		<div layout="column" flex>
-			<md-toolbar   class="md-hue-3 toolbar">
-			  <div class="md-toolbar-tools">
-				<span flex></span><span><img onClick='window.location="/";' class="logo" src="/images/logo.png"/></span><span flex></span>
+			<md-list-item  ng-repeat="item in deadlines" ng-click="view(item)">
+			  <span class="circle-gt-md md-title" style="background-color:{{item.color}}" >{{ item.module }}</span>
+			  <div class="md-list-item-text" layout="column" >
+				<p class="md-title">{{ item.title }}</p>
+				<p class="md-subhead">Contributor: {{ item.contributor }}</p>
+			  </div><span flex></span>
+			  <div layout="column">
+				<p class="md-title">{{ item.date}}</p>
 			  </div>
-			</md-toolbar>
-
-			<md-content>
-			  <md-list flex>
-
-				<md-list-item  ng-repeat="item in deadlines" ng-click="view(item)">
-				  <span class="circle-gt-md md-title" style="background-color:{{item.color}}" >{{ item.module }}</span>
-				  <div class="md-list-item-text" layout="column" >
-					<p class="md-title">{{ item.title }}</p>
-					<p class="md-subhead">Contributor: {{ item.contributor }}</p>
-				  </div><span flex></span>
-				  <div layout="column">
-					<p class="md-title">{{ item.date}}</p>
-				  </div>
-				</md-list-item>
-			  </md-list>
-			</md-content>
-			</div>
-	</div>
+			</md-list-item>
+		  </md-list>
+		</md-content>
+		</md-content>
 
 	<!--mobile size-->
-	<div hide-gt-md layout="row">
-		<div layout="column">
+	<div hide-gt-md layout="row" flex>
+		<div layout="column" class="full-height">
 			<md-sidenav
 				class="md-sidenav-left"
 				md-component-id="left"
 				md-is-locked-open="$mdMedia('gt-md')"
 				md-whiteframe="4">
-
+				<md-toolbar   class="md-hue-3 toolbar">
+					  <div class="md-toolbar-tools">
+						<span flex></span><span>Filter</span><span flex></span>
+					  </div>
+				</md-toolbar>
 
 			  <md-content layout-padding>
+				
 				<md-list flex>
-
+					
 
 					<md-list-item ng-repeat="mod in modules" ng-click="filter(mod)" >
 						<p class="md-title"layout="row">{{mod}}</p>
@@ -94,4 +101,4 @@
 		</div>
 	</div>
 
-</div>
+</md-content>
