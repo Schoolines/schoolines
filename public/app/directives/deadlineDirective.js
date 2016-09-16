@@ -4,18 +4,37 @@ angular.module("schoolines").directive("deadline", function() {
     return {
         restrict: "AE",
         templateUrl: "/app/directives/deadline.html",
-        controller: ["$mdSidenav", "$scope", "$timeout", "$log", "AuthService", "IVLEService", "Session", "DeadlineService", "$localStorage",
-        function($mdSidenav, $scope, $timeout, $log, AuthService, IVLEService, Session, DeadlineService, $localStorage) {
+        controller: ["$mdSidenav","$location", "$scope", "$timeout", "$log", "AuthService", "IVLEService", "Session", "DeadlineService", "$localStorage",
+        function($mdSidenav, $location, $scope, $timeout, $log, AuthService, IVLEService, Session, DeadlineService, $localStorage) {
             AuthService.autologin().then(function() {
 
                 IVLEService.getModules(Session.token).then(function() {
-                    $scope.modules = $localStorage.modules;
+                    $scope.modules = ["All"];
+                    $scope.modules = $scope.modules.concat($localStorage.modules);
                     DeadlineService.getDeadline().then(function(){
-                        $scope.deadlines = JSON.parse($localStorage.deadlines.deadlineArray);
-                        console.log($scope.deadlines);
+
+                        var deadlines = JSON.parse($localStorage.deadlines.deadlineArray);
+                        $scope.deadlines = deadlines;
+
+                        $scope.filter = function(mod){
+                            if(mod == "All"){
+                                $scope.deadlines = deadlines;
+                                $scope.close();
+                                return ;
+                            }
+                            var d = [];
+                            for(var deadline of deadlines){
+                                if(deadline.module == mod)
+
+                                    d.push(deadline);
+                            }
+                            $scope.deadlines = d;
+                            $scope.close();
+                        }
+
                         for (var d of $scope.deadlines) {
                             // TODO change color
-                            console.log(d.date);
+
                             d.color = "red";
                         }
                     });
@@ -23,25 +42,10 @@ angular.module("schoolines").directive("deadline", function() {
                 });
             });
 
-            // $scope.deadlines = [{
-            //     "module": "cs3216",
-            //     "date": "2016/9/12",
-            //     "title": "some title",
-            //     "desc": "some desc",
-            //     "color": "#FFEB3B"
-            // }, {
-            //     "module": "cs3234",
-            //     "date": "2016/9/12",
-            //     "title": "another title",
-            //     "desc": "another desc",
-            //     "color": "#CDDC39"
-            // }, {
-            //     "module": "cs3234",
-            //     "date": "2016/9/12",
-            //     "title": "hw2",
-            //     "desc": "13/9/2016",
-            //     "color": "#CDDC39"
-            // }];
+            $scope.view = function(deadline){
+                DeadlineService.deadlineDetail = deadline;
+                $location.path('/deadlineDetail');
+            }
 
             $scope.close = function() {
                 // Component lookup should always be available since we are not using `ng-if`

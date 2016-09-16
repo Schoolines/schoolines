@@ -27,10 +27,12 @@ router.get("/getDeadlines", function(req, res) {
         var deadlineArray = [];
         var convertDate = function(date){
             var d = new Date(date);
-            return d.getDate()+'/'+d.getMonth()+'/'+d.getFullYear() + " " +d.getHours() + ":" + d.getMinutes();
+            return d.getDate()+'/'+d.getMonth()+'/'+d.getFullYear() + " " +d.getHours() + ":" +
+            ((d.getMinutes() > 9 ) ? d.getMinutes() : d.getMinutes()+"0");
         }
         for (var deadline of allDeadlines) {
             deadlineArray.push({
+                id: deadline.id,
                 title: deadline.title,
                 des: deadline.description,
                 module: deadline.module,
@@ -38,7 +40,6 @@ router.get("/getDeadlines", function(req, res) {
                 contributor: deadline.User.name
             });
         }
-        console.log(deadlineArray);
 		res.send({
 			deadlineArray: JSON.stringify(deadlineArray)
 		});

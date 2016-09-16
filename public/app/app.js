@@ -20,6 +20,10 @@ schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider",
             templateUrl: "/app/components/deadlineCreate/deadlineCreate.html",
             controller: "deadlineCreateController",
         }).
+        when("/deadlineDetail",{
+            templateUrl: "/app/components/deadlineDetail/deadlineDetail.html",
+            controller: "deadlineDetailController"
+        }).
         otherwise({
             redirectTo: "/"
         });
