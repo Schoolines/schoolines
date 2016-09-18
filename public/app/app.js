@@ -28,7 +28,7 @@ schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider",
             redirectTo: "/"
         });
 
-        $mdThemingProvider.theme('default').primaryPalette('red');
+        $mdThemingProvider.theme('default').primaryPalette('blue-grey');
     	$mdThemingProvider.enableBrowserColor({
           theme: 'default', // Default is 'default'
           palette: 'red', // Default is 'primary', any basic material palette and extended palettes are available

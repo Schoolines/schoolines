@@ -9,15 +9,11 @@
 }
 
 .logo{
-	height:80px !important;
-	margin-top:35px;
-}
-
-.logo-mobile{
-	height:50px !important;
-
+	height:100px !important;
 	margin-top:20px;
 }
+
+
 .border{
 	border-right: 1px solid #333;
 }
@@ -28,11 +24,19 @@
 	border-radius:50%;
 	text-align: center;
 	vertical-align: middle;  
-	margin-right:5px;
-	margin-left:5px;
 }
 .space-between{
 	margin-bottom:5px;
+}
+.logo-header{
+	min-height: 70px;
+	position:fixed;
+	top:0;
+}
+.side-bar-fix{
+	position:fixed;
+	top:0;
+	height:100vh;
 }
 
 .height-150{
@@ -44,7 +48,15 @@
 	width:25px;
 	margin-top:10px;
 }
+.margin-list{
+	margin-top:70px;
+}
 
+.remove-margin{
+	margin:0px;
+	padding:0px;
+	height:10px;
+}
 .full-height{
 	
 	height:100vh;

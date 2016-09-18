@@ -53,7 +53,7 @@
 	<div hide-gt-md layout="row" flex>
 		<div layout="column" class="full-height">
 			<md-sidenav
-				class="md-sidenav-left"
+				class="md-sidenav-left side-bar-fix"
 				md-component-id="left"
 				md-is-locked-open="$mdMedia('gt-md')"
 				md-whiteframe="4">
@@ -86,13 +86,13 @@
 			</md-toolbar>
 
 			<md-content>
-			  <md-list flex>
+			  <md-list flex class="margin-list">
 
 				<md-list-item  ng-repeat="item in deadlines"  >
-				  <span class="circle title" style="background-color:{{item.color}}" >{{ item.module }}</span>
-				  <div class="md-list-item-text" layout="column" ng-click="view(item)" flex>
-					<md-list-item class="md-title"><span>{{ item.title }}</span><span flex></span><span class="md-body-1">{{ item.date}}</span></md-list-item>
-					<md-list-item class="md-body-1">Contributor: {{ item.contributor }}</md-list-item>
+				  <span class="circle md-body-2" style="background-color:{{item.color}}" >{{ item.module }}</span>
+				  <div class="" layout="column" ng-click="view(item)" flex>
+					<md-list-item class="md-body-2 remove-margin"><span>{{ item.title }}</span><span flex></span><span class="md-body-1">{{ item.date}}</span></md-list-item>
+					<md-list-item class="md-caption remove-margin">By {{ item.contributor }}</md-list-item>
 				  </div>
 
 				</md-list-item>
