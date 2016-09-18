@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 node_modules
 config.json
 npm-debug.log
 bin/www
+=======
+node_modules
+config.json
+npm-debug.log
+>>>>>>> b30036b9d254b9171a16ca9cd3a4b50cc15cd11f
