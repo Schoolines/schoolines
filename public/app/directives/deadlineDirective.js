@@ -9,11 +9,14 @@ angular.module("schoolines").directive("deadline", function() {
             AuthService.autologin().then(function() {
 
                 IVLEService.getModules(Session.token).then(function() {
-                    $scope.modules = ["All"];
+                    $scope.modules = ["All", "Hidden"];
                     $scope.modules = $scope.modules.concat($localStorage.modules);
                     DeadlineService.getDeadline().then(function(){
 
-                        var deadlines = JSON.parse($localStorage.deadlines.deadlineArray);
+                        var deadlines = JSON.parse($localStorage.deadlines.deadlineArray).filter(function(deadline){
+                            if(!$localStorage.hiddenDeadlines) return true;
+                            return !$localStorage.hiddenDeadlines.includes(deadline.id);
+                        });
                         $scope.deadlines = deadlines;
 
                         $scope.filter = function(mod){
@@ -22,6 +25,16 @@ angular.module("schoolines").directive("deadline", function() {
                                 $scope.close();
                                 return ;
                             }
+
+                            if(mod == "Hidden"){
+                                $scope.deadlines = JSON.parse($localStorage.deadlines.deadlineArray).filter(function(deadline){
+                                    return $localStorage.hiddenDeadlines.includes(deadline.id);
+
+                                });
+                                $scope.close();
+                                return ;
+                            }
+
                             var d = [];
                             for(var deadline of deadlines){
                                 if(deadline.module == mod)
