@@ -1,7 +1,7 @@
 "use strict"
-require('angulartics');
+
 var schoolines = angular.module("schoolines", [
-    "ngRoute","ngMaterial", "ngCookies", "ngResource", "ngStorage", 'angulartics', require('angulartics-google-analytics')
+    "ngRoute","ngMaterial", "ngCookies", "ngResource", "ngStorage"
 ]);
 
 schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider",

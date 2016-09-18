@@ -3,6 +3,7 @@ angular.module("schoolines")
     .controller('indexController', ["$scope", "$localStorage", "$timeout", "$mdSidenav", "$log", "$location", "$routeParams", "$window", "IVLEService", "DeadlineService", "AuthService", "Session",
             function($scope, $localStorage, $timeout, $mdSidenav, $log, $location, $routeParams, $window, IVLEService, DeadlineService, AuthService, Session) {
                 $scope.title = "Schoolines";
+                $window.ga('send', 'pageview', { page: $location.url() });
 
                 AuthService.autologin().then(function(){
                     console.log(Session.token);
