@@ -4,8 +4,8 @@ var schoolines = angular.module("schoolines", [
     "ngRoute","ngMaterial", "ngCookies", "ngResource", "ngStorage"
 ]);
 
-schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider",
-    function($routeProvider, $locationProvider, $mdThemingProvider) {
+schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider", "$location",
+    function($routeProvider, $locationProvider, $mdThemingProvider, $location) {
         $routeProvider.
         when("/", {
             templateUrl: "/app/components/index/index.html",
