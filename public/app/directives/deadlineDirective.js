@@ -46,8 +46,8 @@ angular.module("schoolines").directive("deadline", function() {
                             $scope.deadlines = d;
                             $scope.close();
                         }
-
-                        $scope.filter(DeadlineService.currentMod);
+                        if(!!DeadlineService.currentMod)
+                            $scope.filter(DeadlineService.currentMod);
 
                         for (var d of $scope.deadlines) {
                             // TODO change color
