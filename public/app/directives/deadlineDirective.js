@@ -1,5 +1,5 @@
-
 "use strict"
+
 
 angular.module("schoolines").directive("deadline", function() {
     return {
@@ -14,7 +14,7 @@ angular.module("schoolines").directive("deadline", function() {
                     $scope.modules = $scope.modules.concat($localStorage.modules);
                     DeadlineService.getDeadline().then(function(){
 
-                        var deadlines = JSON.parse($localStorage.deadlines.deadlineArray).filter(function(deadline){
+                        var deadlines = $localStorage.deadlines.deadlineArray.filter(function(deadline){
                             if(!$localStorage.hiddenDeadlines) return true;
                             return !$localStorage.hiddenDeadlines.includes(deadline.id);
                         });
@@ -30,7 +30,7 @@ angular.module("schoolines").directive("deadline", function() {
                             }
 
                             if(mod == "Hidden"){
-                                $scope.deadlines = JSON.parse($localStorage.deadlines.deadlineArray).filter(function(deadline){
+                                $scope.deadlines = $localStorage.deadlines.deadlineArray.filter(function(deadline){
                                     return $localStorage.hiddenDeadlines.includes(deadline.id);
 
                                 });
@@ -46,27 +46,24 @@ angular.module("schoolines").directive("deadline", function() {
                             }
                             $scope.deadlines = d;
                             $scope.close();
-							
-							var colors = ["#9dc6d8","#00b3ca","#7dd0b6","#1d4e89","#d2b29b","#e38690","#f69256","#ead98b","#965251","#c6cccc"];
-							var moduleList = $scope.modules;
-							console.log(moduleList);
-							for (var d of $scope.deadlines) {
-								// TODO change color
-								var modIndex = moduleList.indexOf(d.module)
-								
-								if(modIndex>=0){
-									d.color = colors[modIndex];
-								}
-								else{
-									d.color = "red";
-								}
-							}
                         }
-						
                         if(!!DeadlineService.currentMod)
                             $scope.filter(DeadlineService.currentMod);
 
-						
+						var colors = ["#9dc6d8","#00b3ca","#7dd0b6","#1d4e89","#d2b29b","#e38690","#f69256","#ead98b","#965251","#c6cccc"];
+						var moduleList = $scope.modules;
+						console.log(moduleList);
+						for (var d of $scope.deadlines) {
+                            // TODO change color
+							var modIndex = moduleList.indexOf(d.module)
+							
+							if(modIndex>=0){
+								d.color = colors[modIndex];
+							}
+							else{
+								d.color = "red";
+							}
+                        }
                     });
 
                 });
