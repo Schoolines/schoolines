@@ -1,4 +1,4 @@
-"use strict"
+
 "use strict"
 
 angular.module("schoolines").directive("deadline", function() {
