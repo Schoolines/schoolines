@@ -1,11 +1,11 @@
 "use strict"
-
+require('angulartics');
 var schoolines = angular.module("schoolines", [
-    "ngRoute","ngMaterial", "ngCookies", "ngResource", "ngStorage"
+    "ngRoute","ngMaterial", "ngCookies", "ngResource", "ngStorage", 'angulartics', require('angulartics-google-analytics')
 ]);
 
-schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider", "$location",
-    function($routeProvider, $locationProvider, $mdThemingProvider, $location) {
+schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider",
+    function($routeProvider, $locationProvider, $mdThemingProvider) {
         $routeProvider.
         when("/", {
             templateUrl: "/app/components/index/index.html",
