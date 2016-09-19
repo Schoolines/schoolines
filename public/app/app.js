@@ -24,11 +24,15 @@ schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider",
             templateUrl: "/app/components/deadlineDetail/deadlineDetail.html",
             controller: "deadlineDetailController"
         }).
+        when("/splash", {
+            templateUrl: "/app/components/splashScreen/splashScreen.html",
+            controller: "splashScreenController"
+        }).
         otherwise({
             redirectTo: "/"
         });
 
-        $mdThemingProvider.theme('default').primaryPalette('red');
+        $mdThemingProvider.theme('default').primaryPalette('blue-grey');
     	$mdThemingProvider.enableBrowserColor({
           theme: 'default', // Default is 'default'
           palette: 'red', // Default is 'primary', any basic material palette and extended palettes are available

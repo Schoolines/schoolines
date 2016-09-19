@@ -1,3 +1,4 @@
+
 var express = require('express');
 var router = express.Router();
 var sequelize = require('sequelize');
@@ -41,7 +42,7 @@ router.get("/getDeadlines", function(req, res) {
             });
         }
 		res.send({
-			deadlineArray: JSON.stringify(deadlineArray)
+			deadlineArray: deadlineArray
 		});
 	});
 });
