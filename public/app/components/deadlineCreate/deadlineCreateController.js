@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module("schoolines").controller("deadlineCreateController",
-["$route", "$scope", "$location","$localStorage" ,"AuthService", "DeadlineService", "Session", "IVLEService", "$window",
+["$route", "$scope", "$location","$localStorage" ,"AuthService", "DeadlineService", "Session", "IVLEService", "$window", 
     function($route, $scope, $location,$localStorage, AuthService, DeadlineService, Session, IVLEService, $window) {
         $window.ga('send', 'pageview', { page: $location.url() });
         AuthService.autologin().then(function(){

@@ -1,0 +1,53 @@
+<div>
+	<md-toolbar class="logo-header md-hue-3">
+		<div class="md-toolbar-tools">
+			<span flex></span><span><img class="logo" src="/images/logo.png"/></span><span flex></span>
+		</div>
+	</md-toolbar>
+	<form name="userForm" class = "form-margin margin-list" ng-submit="createDeadline()">
+		<div layout="row">
+			<md-input-container class="md-block" flex>
+				<label>Module</label>
+				<md-select ng-model="deadline.module" ng-required="{{true}}">
+				  <md-option ng-repeat="mod in modules" value="{{mod}}">
+					{{mod}}
+				  </md-option>
+				</md-select>
+			</md-input-container>
+		</div>
+		<div layout="row">
+			<md-input-container class="md-block" flex>
+				<label>Title</label>
+				<input ng-model="deadline.title" ng-required="{{true}}">
+			</md-input-container>
+		</div>
+		<div layout="row">
+
+			<md-input-container>
+				<label>Date</label>
+				<md-datepicker  ng-model="myDate" ng-required="{{true}}"></md-datepicker>
+			</md-input-container>
+			<span flex></span>
+			<md-input-container class="time">
+				<label>Hour</label>
+				<input type="number" step="any" name="hour" ng-model="deadline.hour" min="0" max="24" ng-required="{{true}}"/>
+			</md-input-container>
+
+			<md-input-container class="time">
+				<label>Min</label>
+				<input type="number" step="any" name="min" ng-model="deadline.min" min="0" max="59"  ng-required="{{true}}"/>
+			</md-input-container>
+		</div>
+		<div layout="row">
+			<md-input-container class="md-block" flex>
+				<label>Description (optional)</label>
+				<input ng-model="deadline.description">
+			</md-input-container>
+		</div>
+		<div layout="row">
+			<span flex></span>
+			<md-button aria-label="Close" ng-click="redirectTo('/')">Back</md-button>
+			<md-button type="submit">Submit</md-button>
+		<div>
+	</form>
+</div>

@@ -16,3 +16,8 @@
 .margin-list{
 	margin-top:70px;
 }
+
+.header-height-70{
+	min-height: 70px;
+
+}
