@@ -24,6 +24,10 @@ schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider",
             templateUrl: "/app/components/deadlineDetail/deadlineDetail.html",
             controller: "deadlineDetailController"
         }).
+        when("/splash", {
+            templateUrl: "/app/components/splashScreen/splashScreen.html",
+            controller: "splashScreenController"
+        }).
         otherwise({
             redirectTo: "/"
         });

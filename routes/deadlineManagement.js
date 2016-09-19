@@ -1,52 +1,4 @@
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
-	
-
-
-
-
-
-
 var express = require('express');
 var router = express.Router();
 var sequelize = require('sequelize');
@@ -96,4 +48,3 @@ router.get("/getDeadlines", function(req, res) {
 });
 
 module.exports = router;
-
