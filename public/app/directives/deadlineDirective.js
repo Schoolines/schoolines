@@ -13,7 +13,7 @@ angular.module("schoolines").directive("deadline", function() {
                     $scope.modules = $scope.modules.concat($localStorage.modules);
                     DeadlineService.getDeadline().then(function(){
 
-                        var deadlines = JSON.parse($localStorage.deadlines.deadlineArray).filter(function(deadline){
+                        var deadlines = $localStorage.deadlines.deadlineArray.filter(function(deadline){
                             if(!$localStorage.hiddenDeadlines) return true;
                             return !$localStorage.hiddenDeadlines.includes(deadline.id);
                         });
@@ -29,7 +29,7 @@ angular.module("schoolines").directive("deadline", function() {
                             }
 
                             if(mod == "Hidden"){
-                                $scope.deadlines = JSON.parse($localStorage.deadlines.deadlineArray).filter(function(deadline){
+                                $scope.deadlines = $localStorage.deadlines.deadlineArray.filter(function(deadline){
                                     return $localStorage.hiddenDeadlines.includes(deadline.id);
 
                                 });

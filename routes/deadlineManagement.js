@@ -41,7 +41,7 @@ router.get("/getDeadlines", function(req, res) {
             });
         }
 		res.send({
-			deadlineArray: JSON.stringify(deadlineArray)
+			deadlineArray: deadlineArray
 		});
 	});
 });
