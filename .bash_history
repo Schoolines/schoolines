@@ -14,3 +14,6 @@ git fetch --all
 git-show-branch -a
 git show-branch -a
 git pull origin/master
+bower install angular-material-datetimepicker
+bower install angular-material-datetimepicker --save
+bower init

@@ -5,9 +5,26 @@ var sequelize = require('sequelize');
 var models = require("../models");
 
 router.post("/create", function(req, res){
-    models.Deadline.create(req.body.deadline).then(function(){
-        res.sendStatus(201);
-    });
+    var deadline = req.body.deadline;
+    if(!!deadline.userId){
+        models.User.findOne({
+            where: {
+                id: deadline.userId
+            }
+        }).then(function(user){
+            if(!!user){
+                models.Deadline.create(deadline).then(function(){
+                    res.sendStatus(201);
+                });
+            }else{
+                res.sendStatus(400);
+            }
+        })
+
+    }else{
+        res.sendStatus(400);
+    }
+
 });
 
 /* Get Deadlines given a list of module codes */
