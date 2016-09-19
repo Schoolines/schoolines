@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 var express = require('express');
 var router = express.Router();
@@ -65,3 +66,72 @@ router.get("/getDeadlines", function(req, res) {
 });
 
 module.exports = router;
+=======
+
+var express = require('express');
+var router = express.Router();
+var sequelize = require('sequelize');
+var models = require("../models");
+
+router.post("/create", function(req, res){
+    var deadline = req.body.deadline;
+    if(!!deadline.userId){
+        models.User.findOne({
+            where: {
+                id: deadline.userId
+            }
+        }).then(function(user){
+            if(!!user){
+                models.Deadline.create(deadline).then(function(){
+                    res.sendStatus(201);
+                });
+            }else{
+                res.sendStatus(400);
+            }
+        })
+
+    }else{
+        res.sendStatus(400);
+    }
+
+});
+
+/* Get Deadlines given a list of module codes */
+router.get("/getDeadlines", function(req, res) {
+	var modules = [];
+	for (i in req.query) {
+		modules.push(req.query[i]);
+	}
+
+	models.sequelize.Promise.all([
+        models.Deadline.findAll({
+            where: {
+                module: modules,
+            },
+            include: [models.User]
+        }),
+    ]).spread(function(allDeadlines) {
+        var deadlineArray = [];
+        var convertDate = function(date){
+            var d = new Date(date);
+            return d.getDate()+'/'+d.getMonth()+'/'+d.getFullYear() + " " +d.getHours() + ":" +
+            ((d.getMinutes() > 9 ) ? d.getMinutes() : d.getMinutes()+"0");
+        }
+        for (var deadline of allDeadlines) {
+            deadlineArray.push({
+                id: deadline.id,
+                title: deadline.title,
+                des: deadline.description,
+                module: deadline.module,
+                date: convertDate(deadline.due),
+                contributor: deadline.User.name
+            });
+        }
+		res.send({
+			deadlineArray: deadlineArray
+		});
+	});
+});
+
+module.exports = router;
+>>>>>>> 569498fd7352f7dae32ff0354060f8734863f616
