@@ -1,7 +1,7 @@
 "use strict"
 
 var schoolines = angular.module("schoolines", [
-    "ngRoute","ngMaterial", "ngCookies", "ngResource", "ngStorage"
+    "ngRoute","ngMaterial", "ngCookies", "ngResource", "ngStorage" , "ngMaterialDatePicker"
 ]);
 
 schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider",
