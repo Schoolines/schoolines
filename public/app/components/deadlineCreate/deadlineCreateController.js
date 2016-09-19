@@ -19,9 +19,13 @@ angular.module("schoolines").controller("deadlineCreateController",
         }
         $scope.createDeadline = function(){
             $scope.deadline.due = $scope.myDate;
-            $scope.deadline.due.setHours($scope.deadline.hour);
-            $scope.deadline.due.setMinutes($scope.deadline.min);
+			var timeObj = $scope.deadline.timeStr;
+			
+            $scope.deadline.due.setHours(timeObj.getHours());
+            $scope.deadline.due.setMinutes(timeObj.getMinutes());
+			console.log("after",$scope.deadline.due);
             $scope.deadline.due = $scope.deadline.due.toString();
+			console.log("deadline",$scope.deadline);
             DeadlineService.create($scope.deadline).then(function(res){
                 $route.reload();
                 $location.path('/');
