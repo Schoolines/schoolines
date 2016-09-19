@@ -5,6 +5,11 @@ angular.module("schoolines").controller("deadlineDetailController",
 function($scope, $location, $localStorage, DeadlineService, $window){
     $scope.deadline = DeadlineService.deadlineDetail;
 
+    if(!$scope.deadline){
+        alert("Please access this page from the main page\n Click OK to go to main page");
+        $location.path("/");
+    }
+
     if(!!$localStorage.hiddenDeadlines && $localStorage.hiddenDeadlines.includes($scope.deadline.id)){
         $scope.isHidden = true;
     }else{
