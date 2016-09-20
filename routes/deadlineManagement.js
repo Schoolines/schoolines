@@ -28,6 +28,17 @@ router.post("/create", function(req, res){
 
 });
 
+router.post("/delete", function(req, res){
+    var id = req.body.id;
+    models.Deadline.destroy({
+        where: {
+            id: id
+        }
+    }).then(function(){
+        res.sendStatus(200);
+    })
+})
+
 /* Get Deadlines given a list of module codes */
 router.get("/getDeadlines", function(req, res) {
 	var modules = [];
@@ -58,7 +69,8 @@ router.get("/getDeadlines", function(req, res) {
                 des: deadline.description,
                 module: deadline.module,
                 date: convertDate(deadline.due),
-                contributor: deadline.User.name
+                contributor: deadline.User.name,
+                userId: deadline.User.id
             });
         }
 		res.send({
