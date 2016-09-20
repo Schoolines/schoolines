@@ -7,7 +7,7 @@ angular.module("schoolines").factory("IVLEService", function($q, $http, $locatio
     /* Login Function */
     ivleService.getLoginUrl = function() {
         var loginLink = "https://ivle.nus.edu.sg/api/login/?";
-        var urlPath = $location.absUrl();
+        var urlPath = $location.protocol() + "://"+ $location.host() + ':'+$location.port() + "/#/";
         var params = $httpParamSerializer({
             apikey: ivle_api_key,
             url: urlPath

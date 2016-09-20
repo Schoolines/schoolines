@@ -1,10 +1,10 @@
 <div>
-	<md-toolbar class="logo-header md-hue-3">
+	<md-toolbar class="md-hue-3 header-height-70">
 		<div class="md-toolbar-tools">
 			<span flex></span><span><img class="logo" src="/images/logo.png"/></span><span flex></span>
 		</div>
 	</md-toolbar>
-	<form name="userForm" class = "form-margin margin-list" ng-submit="createDeadline()">
+	<form name="userForm" class = "form-margin" ng-submit="createDeadline()">
 		<div layout="row">
 			<md-input-container class="md-block" flex>
 				<label>Module</label>
@@ -28,16 +28,13 @@
 				<md-datepicker  ng-model="myDate" ng-required="{{true}}"></md-datepicker>
 			</md-input-container>
 			<span flex></span>
-			<md-input-container class="time">
-				<label>Hour</label>
-				<input type="number" step="any" name="hour" ng-model="deadline.hour" min="0" max="24" ng-required="{{true}}"/>
-			</md-input-container>
-
-			<md-input-container class="time">
-				<label>Min</label>
-				<input type="number" step="any" name="min" ng-model="deadline.min" min="0" max="59"  ng-required="{{true}}"/>
+			<md-input-container>
+				<label>Time</label>
+				<input class=" md-input time" mdc-datetime-picker="" date="false" time="true" id="time2"
+				placeholder="23:59" min-date="minDate" format="HH:mm" ng-model="deadline.timeStr" type="text"  ng-required="{{true}}">
 			</md-input-container>
 		</div>
+		
 		<div layout="row">
 			<md-input-container class="md-block" flex>
 				<label>Description (optional)</label>

@@ -14,7 +14,26 @@ angular.module("schoolines").directive("deadline", function() {
                     $scope.modules = $scope.modules.concat($localStorage.modules);
                     DeadlineService.getDeadline().then(function(){
 
-                        var deadlines = $localStorage.deadlines.deadlineArray.filter(function(deadline){
+                        var deadlineArray = $localStorage.deadlines.deadlineArray;
+
+                        //add colors
+                        var colors = ["#9dc6d8","#00b3ca","#7dd0b6","#1d4e89","#d2b29b","#e38690","#f69256","#ead98b","#965251","#c6cccc"];
+						var moduleList = $scope.modules;
+						console.log(moduleList);
+						for (var d of deadlineArray) {
+                            // TODO change color
+							var modIndex = moduleList.indexOf(d.module)
+
+							if(modIndex>=0){
+								d.color = colors[modIndex];
+							}
+							else{
+								d.color = "red";
+							}
+                        }
+
+
+                        var deadlines = deadlineArray.filter(function(deadline){
                             if(!$localStorage.hiddenDeadlines) return true;
                             return !$localStorage.hiddenDeadlines.includes(deadline.id);
                         });
@@ -30,13 +49,8 @@ angular.module("schoolines").directive("deadline", function() {
                             }
 
                             if(mod == "Hidden"){
-                                $scope.deadlines = $localStorage.deadlines.deadlineArray.filter(function(deadline){
-                                    if ($localStorage.hiddenDeadlines) {
-                                        return $localStorage.hiddenDeadlines.includes(deadline.id);
-                                    } else {
-                                        return [];
-                                    }
-
+                                $scope.deadlines = deadlineArray.filter(function(deadline){
+                                    return (!!$localStorage.hiddenDeadlines) ?  $localStorage.hiddenDeadlines.includes(deadline.id) : false;
                                 });
                                 $scope.close();
                                 return ;
@@ -54,20 +68,7 @@ angular.module("schoolines").directive("deadline", function() {
                         if(!!DeadlineService.currentMod)
                             $scope.filter(DeadlineService.currentMod);
 
-						var colors = ["#9dc6d8","#00b3ca","#7dd0b6","#1d4e89","#d2b29b","#e38690","#f69256","#ead98b","#965251","#c6cccc"];
-						var moduleList = $scope.modules;
-						console.log(moduleList);
-						for (var d of $scope.deadlines) {
-                            // TODO change color
-							var modIndex = moduleList.indexOf(d.module)
-							
-							if(modIndex>=0){
-								d.color = colors[modIndex];
-							}
-							else{
-								d.color = "red";
-							}
-                        }
+
                     });
 
                 });

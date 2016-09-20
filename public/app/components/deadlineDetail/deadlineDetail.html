@@ -1,10 +1,10 @@
 <div flex>
-	<md-toolbar   class="toolbar logo-header md-hue-3">
+	<md-toolbar   class="toolbar md-hue-3 header-height-70">
 	  <div class="md-toolbar-tools">
 		<span flex></span><span><img onClick='window.location="/";' class="logo" src="/images/logo.png"/></span><span flex></span>
 	  </div>
 	</md-toolbar>
-	<md-content layout="column margin-list" flex>
+	<md-content layout="column" flex>
 		<div layout="column" layout-align="center center" flex>
 			<span flex></span><span class="md-headline">{{deadline.module}}</span><span flex></span>
 		</div>
@@ -22,6 +22,7 @@
 				<span flex></span><md-button aria-label="Close" ng-click="redirectTo('/')">Back</md-button>
 				<md-button class="md-warn md-" ng-if="!isHidden" ng-click="hideDeadline(deadline.id)">Hide</md-button>
 				<md-button class="md-warn" ng-if="isHidden" ng-click="unhideDeadline(deadline.id)">Unhide</md-button>
+				<md-button class="md-warn" ng-if="isContributor" ng-click="deleteDeadline(deadline.id)">remove</md-button>
 			</md-list-item>
 		</md-list>
 	</md-content >

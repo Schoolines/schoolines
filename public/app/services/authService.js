@@ -19,7 +19,7 @@ function($http, $location, $cookies, IVLEService, Session, $window, $q, $routePa
             this.login($localStorage.token);
             return $q.resolve();
         }else{
-            $window.location.href = IVLEService.getLoginUrl();
+            $location.path("/splash");
             return $q.resolve();
         }
     };

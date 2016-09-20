@@ -16,7 +16,7 @@
 				</md-toolbar>
 			<md-content layout-padding>
 				<md-list flex>
-					
+
 					<md-list-item ng-repeat="mod in modules"  ng-click="filter(mod)">
 						<p class="md-title"layout="row">{{mod}}</p>
 					</md-list-item>
@@ -64,9 +64,9 @@
 				</md-toolbar>
 
 			  <md-content layout-padding>
-				
+
 				<md-list flex>
-					
+
 
 					<md-list-item ng-repeat="mod in modules" ng-click="filter(mod)" >
 						<p class="md-title"layout="row">{{mod}}</p>
@@ -80,8 +80,7 @@
 		<div layout="column" flex>
 			<md-toolbar   class="md-hue-3 toolbar logo-header">
 			  <div class="md-toolbar-tools">
-				<img class="drawer-icon" src="images/drawer.png" ng-click="toggleLeft()"/>
-				<span flex></span><span><img onClick='window.location="/";' class="logo" src="images/logo.png"/></span><span flex></span>
+				<span flex><img class="drawer-icon" src="images/drawer.png" ng-click="toggleLeft()"/></span><span><img onClick='window.location="/";' class="logo" src="images/logo.png"/></span><span flex></span>
 			  </div>
 			</md-toolbar>
 

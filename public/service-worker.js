@@ -1,4 +1,4 @@
-var cacheName = 'schoolines-1';  
+var cacheName = 'schoolines-2';  
 var filesToCache = [  
   '/app/components/index/index.html', 
   '/app/components/deadlineDetail/deadlineDetail.html',
@@ -18,6 +18,9 @@ var filesToCache = [
   "/javascripts/vendor/angular-aria.min.js",
   "/javascripts/vendor/angular-animate.min.js",
   "/javascripts/vendor/angular-material.min.js",
+  "/javascripts/vendor/moment.js",
+  "/javascripts/vendor/beautifier.js",
+  "/javascripts/vendor/angular-material-datetimepicker.min.js",
   "/javascripts/vendor/ngStorage.min.js",
   "/app/app.js",
   "app/directives/deadlineDirective.js",
@@ -38,7 +41,22 @@ var filesToCache = [
   "/stylesheets/deadline.css",
   "/stylesheets/navbar.css",
   "/stylesheets/deadlineCreate.css",
-  "/images/favicon.ico",
+  "/stylesheets/material-datetimepicker.min.css",
+  "/images/apple-icon-57x57.png",
+  "/images/apple-icon-60x60.png",
+  "/images/apple-icon-72x72.png",
+  "/images/apple-icon-76x76.png",
+  "/images/apple-icon-114x114.png",
+  "/images/apple-icon-120x120.png",
+  "/images/apple-icon-144x144.png",
+  "/images/apple-icon-152x152.png",
+  "/images/apple-icon-180x180.png",
+  "/images/android-icon-192x192.png",
+  "/images/favicon-32x32.png",
+  "/images/favicon-96x96.png",
+  "/images/favicon-16x16.png",
+  "/manifest.json",
+  "/images/ms-icon-144x144.png",
   "/stylesheets/fonts/Roboto-300/Roboto-300.eot",
   "/stylesheets/fonts/Roboto-regular/Roboto-regular.eot",
   "/stylesheets/fonts/Roboto-500/Roboto-500.eot",
@@ -54,7 +72,8 @@ var filesToCache = [
   "/stylesheets/fonts/Roboto-500/Roboto-500.woff2",
   "/stylesheets/fonts/Roboto-700/Roboto-700.woff2",
   "/stylesheets/fonts/Roboto-italic/Roboto-italic.woff2",
-  "/"
+  "/",
+  "/service-worker.js"
 ];
 
 self.addEventListener('install', function(e) {  
@@ -89,6 +108,7 @@ self.addEventListener('fetch', function(e) {
     })  
   );  
 });
+
 
 // Application Data
 

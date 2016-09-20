@@ -1,7 +1,7 @@
 "use strict"
 
 var schoolines = angular.module("schoolines", [
-    "ngRoute","ngMaterial", "ngCookies", "ngResource", "ngStorage"
+    "ngRoute","ngMaterial", "ngCookies", "ngResource", "ngStorage" , "ngMaterialDatePicker"
 ]);
 
 schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider",
@@ -35,7 +35,7 @@ schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider",
         $mdThemingProvider.theme('default').primaryPalette('blue-grey');
     	$mdThemingProvider.enableBrowserColor({
           theme: 'default', // Default is 'default'
-          palette: 'red', // Default is 'primary', any basic material palette and extended palettes are available
+          palette: 'blue-grey', // Default is 'primary', any basic material palette and extended palettes are available
           hue: '200' // Default is '800'
         });
     }
