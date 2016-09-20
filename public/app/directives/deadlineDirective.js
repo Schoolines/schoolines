@@ -31,7 +31,14 @@ angular.module("schoolines").directive("deadline", function() {
 								d.color = "red";
 							}
                         }
-
+						
+						for (var d of deadlineArray){
+							var slashIndex = d.module.indexOf("/");
+							if (slashIndex>=0)
+							{
+								d.module =  d.module.substring(0, slashIndex);
+							}
+						}
 
                         var deadlines = deadlineArray.filter(function(deadline){
                             if(!$localStorage.hiddenDeadlines) return true;
