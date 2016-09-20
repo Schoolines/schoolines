@@ -37,6 +37,7 @@ router.get("/getDeadlines", function(req, res) {
 
 	models.sequelize.Promise.all([
         models.Deadline.findAll({
+            order:  [['due', 'ASC']],
             where: {
                 module: modules,
             },
@@ -50,6 +51,7 @@ router.get("/getDeadlines", function(req, res) {
             ((d.getMinutes() > 9 ) ? d.getMinutes() : d.getMinutes()+"0");
         }
         for (var deadline of allDeadlines) {
+            console.log(deadline.due);
             deadlineArray.push({
                 id: deadline.id,
                 title: deadline.title,
