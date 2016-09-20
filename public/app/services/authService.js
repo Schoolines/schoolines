@@ -5,17 +5,17 @@ function($http, $location, $cookies, IVLEService, Session, $window, $q, $routePa
     var authService = {};
 
     authService.autologin = function(){
-        if($cookies.get("token")){
+        if(!!$routeParams.token){
+            this.login($routeParams.token);
+            return $q.resolve();
+        }else if($cookies.get("token")){
             Session.create($cookies.get("token"));
             Session.userId = $cookies.get("userId");
 
             $localStorage.token = $cookies.get("token");
             $localStorage.userId = $cookies.get("userId");
             return $q.resolve();
-        }else if(!!$routeParams.token){
-            this.login($routeParams.token);
-            return $q.resolve();
-        }else if(!!$localStorage.token){
+        } else if(!!$localStorage.token){
             this.login($localStorage.token);
             return $q.resolve();
         }else{

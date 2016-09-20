@@ -54,11 +54,20 @@ router.post("/createUser", function(req, res, next) {
 
 
                 } else {
-                    console.log("user already exists");
-                    res.status(201).send({
-                        status: "exist",
-                        userId: user.id
-                    })
+                    models.User.update({
+                        authToken: json_data.AuthToken
+                    },{
+                        where: {
+                            id: user.id
+                        }
+                    }).then(function(){
+                        console.log("user already exists");
+                        res.status(201).send({
+                            status: "exist",
+                            userId: user.id
+                        })
+                    });
+
                 }
             });
 
@@ -93,4 +102,3 @@ router.post("/getModules", function(req, res, next) {
 });
 
 module.exports = router;
-

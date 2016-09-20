@@ -18,7 +18,7 @@
 				<md-list flex>
 
 					<md-list-item ng-repeat="mod in modules"  ng-click="filter(mod)">
-						<p class="md-title"layout="row">{{mod}}</p>
+						<p class="md-title"layout="row">{{slash(mod)}}</p>
 					</md-list-item>
 
 				</md-list>
@@ -69,7 +69,7 @@
 
 
 					<md-list-item ng-repeat="mod in modules" ng-click="filter(mod)" >
-						<p class="md-title"layout="row">{{mod}}</p>
+						<p class="md-title"layout="row">{{slash(mod)}}</p>
 
 					</md-list-item>
 			  </md-content>
