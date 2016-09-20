@@ -40,10 +40,13 @@ angular.module("schoolines").directive("deadline", function() {
                         $scope.deadlines = deadlines;
 
                         $scope.slash = function(mod){
-                            var slashIndex = d.module.indexOf('/');
-                            if (slashIndex>=0)
-                            {
-                                d.module =  d.module.substring(0, slashIndex);
+                            var slashIndex = mod.indexOf('/');
+
+                            if (slashIndex>=0){
+                                console.log(slashIndex);
+                                return mod.substring(0, slashIndex);
+                            }else{
+                                return mod;
                             }
                         }
 

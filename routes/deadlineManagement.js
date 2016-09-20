@@ -13,7 +13,7 @@ router.post("/create", function(req, res){
                 id: deadline.userId
             }
         }).then(function(user){
-            if(!!user){
+            if(!!user && user.token == deadline.token){
                 models.Deadline.create(deadline).then(function(){
                     res.sendStatus(201);
                 });
