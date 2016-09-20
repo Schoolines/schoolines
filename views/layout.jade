@@ -9,7 +9,7 @@ html(ng-app="schoolines")
     // javascripts
     script(src="/javascripts/vendor/jquery.min.js")
     script(src="/javascripts/vendor/angular.min.js")
-    script(src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js")
+    script(src="/javascripts/vendor/angular-resource.js")
     script(src="/javascripts/vendor/angular-route.js")
     script(src="/javascripts/vendor/angular-cookies.js")
     script(src="/javascripts/vendor/angular-ui-router.min.js")
@@ -47,12 +47,19 @@ html(ng-app="schoolines")
     script(src="/app/components/deadlineCreate/deadlineCreateController.js")
     script(src="/app/components/deadlineDetail/deadlineDetailController.js")
     script(src="/app/components/splashScreen/splashScreenController.js")
-    
+
+    // Service worker
+    script.
+      if('serviceWorker' in navigator) {  
+        navigator.serviceWorker  
+                 .register('/service-worker.js')  
+                 .then(function() { console.log('Service Worker Registered'); });  
+      }
     
     // css
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel="stylesheet" href="/stylesheets/angular-material.min.css")
-    link(rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic")
+    link(rel="stylesheet" href="/stylesheets/fonts.css")
     link(rel="stylesheet" href="/stylesheets/deadline.css")
     link(rel="stylesheet" href="/stylesheets/navbar.css")
     link(rel="stylesheet" href="/stylesheets/deadlineCreate.css")
