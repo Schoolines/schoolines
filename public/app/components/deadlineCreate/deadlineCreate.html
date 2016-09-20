@@ -6,6 +6,9 @@
 	</md-toolbar>
 	<form name="userForm" class = "form-margin" ng-submit="createDeadline()">
 		<div layout="row">
+			<md-content>Contribute a deadline!</md-content>
+		</div>
+		<div layout="row">
 			<md-input-container class="md-block" flex>
 				<label>Module</label>
 				<md-select ng-model="deadline.module" ng-required="{{true}}">

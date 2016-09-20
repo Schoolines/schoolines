@@ -13,6 +13,7 @@ angular.module("schoolines").directive("deadline", function() {
                     $scope.modules = ["All", "Hidden"];
                     $scope.modules = $scope.modules.concat($localStorage.modules);
                     DeadlineService.getDeadline().then(function(){
+<<<<<<< HEAD
 
                         var deadlineArray = $localStorage.deadlines.deadlineArray;
 
@@ -34,6 +35,36 @@ angular.module("schoolines").directive("deadline", function() {
 
 
                         var deadlines = deadlineArray.filter(function(deadline){
+=======
+
+                        var deadlineArray = $localStorage.deadlines.deadlineArray;
+
+                        //add colors
+                        var colors = ["#9dc6d8","#00b3ca","#7dd0b6","#1d4e89","#d2b29b","#e38690","#f69256","#ead98b","#965251","#c6cccc"];
+						var moduleList = $scope.modules;
+						console.log(moduleList);
+						for (var d of deadlineArray) {
+                            // TODO change color
+							var modIndex = moduleList.indexOf(d.module)
+
+							if(modIndex>=0){
+								d.color = colors[modIndex];
+							}
+							else{
+								d.color = "red";
+							}
+                        }
+						
+						for (var d of deadlineArray){
+							var slashIndex = d.module.indexOf("/");
+							if (slashIndex>=0)
+							{
+								d.module =  d.module.substring(0, slashIndex);
+							}
+						}
+
+                        var deadlines = deadlineArray.filter(function(deadline){
+>>>>>>> master
                             if(!$localStorage.hiddenDeadlines) return true;
                             return !$localStorage.hiddenDeadlines.includes(deadline.id);
                         });
@@ -49,18 +80,8 @@ angular.module("schoolines").directive("deadline", function() {
                             }
 
                             if(mod == "Hidden"){
-<<<<<<< HEAD
-                                $scope.deadlines = $localStorage.deadlines.deadlineArray.filter(function(deadline){
-                                    if ($localStorage.hiddenDeadlines) {
-                                        return $localStorage.hiddenDeadlines.includes(deadline.id);
-                                    } else {
-                                        return [];
-                                    }
-=======
                                 $scope.deadlines = deadlineArray.filter(function(deadline){
                                     return (!!$localStorage.hiddenDeadlines) ?  $localStorage.hiddenDeadlines.includes(deadline.id) : false;
->>>>>>> master
-
                                 });
                                 $scope.close();
                                 return ;
