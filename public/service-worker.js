@@ -1,4 +1,4 @@
-var cacheName = 'schoolines-2';  
+var cacheName = 'schoolines-5';  
 var filesToCache = [  
   '/app/components/index/index.html', 
   '/app/components/deadlineDetail/deadlineDetail.html',
@@ -72,8 +72,7 @@ var filesToCache = [
   "/stylesheets/fonts/Roboto-500/Roboto-500.woff2",
   "/stylesheets/fonts/Roboto-700/Roboto-700.woff2",
   "/stylesheets/fonts/Roboto-italic/Roboto-italic.woff2",
-  "/",
-  "/service-worker.js"
+  "/"
 ];
 
 self.addEventListener('install', function(e) {  
@@ -101,7 +100,7 @@ self.addEventListener('activate', function(e) {
 });
 
 self.addEventListener('fetch', function(e) {  
-  console.log('[ServiceWorker] Fetch', e.request.url);  
+  // console.log('[ServiceWorker] Fetch', e.request.url);  
   e.respondWith(  
     caches.match(e.request).then(function(response) {  
       return response || fetch(e.request);  
@@ -115,20 +114,23 @@ self.addEventListener('fetch', function(e) {
 // var dataCacheName = 'deadlineData-v1';
 
 // self.addEventListener('fetch', function(e) {  
-//   console.log('[ServiceWorker] Fetch', e.request.url);  
+//   // console.log('[ServiceWorker] Fetch', e.request.url);  
 //   var apiFlag = 'Management';  
-//   if (e.request.url.indexOf(apiFlag) === 0) {  
+//   if (e.request.url.indexOf(apiFlag) > 0 && navigator.onLine) {  
+//     console.log("ONLINE")
+//     console.log(e.request.url);
 //     e.respondWith(  
 //       fetch(e.request)  
 //         .then(function(response) {  
 //           return caches.open(dataCacheName).then(function(cache) {  
 //             cache.put(e.request.url, response.clone());  
 //             console.log('[ServiceWorker] Fetched&Cached Data');  
-//             return response;  
+//             return response;
 //           });  
 //         })  
 //     );
 //   } else {  
+//     console.log("caching");
 //     e.respondWith(  
 //       caches.match(e.request).then(function(response) {  
 //         return response || fetch(e.request);  
