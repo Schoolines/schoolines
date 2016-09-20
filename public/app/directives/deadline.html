@@ -36,7 +36,7 @@
 		  <md-list flex>
 
 			<md-list-item  ng-repeat="item in deadlines" ng-click="view(item)">
-			  <span class="circle-gt-md md-title" style="background-color:{{item.color}}" >{{ item.module }}</span>
+			  <span class="circle-gt-md md-title" style="background-color:{{item.color}}" >{{ slash(item.module) }}</span>
 			  <div class="md-list-item-text" layout="column" >
 				<p class="md-title">{{ item.title }}</p>
 				<p class="md-subhead">Contributor: {{ item.contributor }}</p>
@@ -88,7 +88,7 @@
 			  <md-list flex class="margin-list">
 
 				<md-list-item  ng-repeat="item in deadlines"  >
-				  <span class="circle md-body-2" style="background-color:{{item.color}}" >{{ item.module }}</span>
+				  <span class="circle md-body-2" style="background-color:{{item.color}}" >{{ slash(item.module) }}</span>
 				  <div class="" layout="column" ng-click="view(item)" flex>
 					<md-list-item class="md-body-2 remove-margin"><span>{{ item.title }}</span><span flex></span><span class="md-body-1">{{ item.date}}</span></md-list-item>
 					<md-list-item class="md-caption remove-margin">By {{ item.contributor }}</md-list-item>
