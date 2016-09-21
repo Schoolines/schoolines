@@ -7,9 +7,11 @@ angular.module("schoolines").directive("deadline", function() {
         templateUrl: "/app/directives/deadline.html",
         controller: ["$mdSidenav","$location", "$scope", "$timeout", "$log", "AuthService", "IVLEService", "Session", "DeadlineService", "$localStorage",
         function($mdSidenav, $location, $scope, $timeout, $log, AuthService, IVLEService, Session, DeadlineService, $localStorage) {
+            $scope.buffering = true;
             AuthService.autologin().then(function() {
 
                 IVLEService.getModules(Session.token).then(function() {
+                    $scope.buffering = false;
                     $scope.modules = ["All", "Hidden"];
                     $scope.modules = $scope.modules.concat($localStorage.modules);
                     DeadlineService.getDeadline().then(function(){
