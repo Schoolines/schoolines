@@ -1,8 +1,8 @@
 
+<img class="loading" ng-if="buffering" src="/images/loading.gif">
+<md-content ng-if="!buffering"  layout="row">
 
-<md-content layout="row">
 
-<img ng-if="buffering" src="/images/buffer.gif">
 	<!--browser size-->
 	<md-content layout="column" hide show-gt-md class="full-height">
 		<md-sidenav
