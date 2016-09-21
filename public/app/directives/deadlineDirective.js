@@ -64,7 +64,6 @@ angular.module("schoolines").directive("deadline", function() {
                             if(mod == "Hidden"){
                                 $scope.deadlines = deadlineArray.filter(function(deadline){
                                     return (!!$localStorage.hiddenDeadlines) ?  $localStorage.hiddenDeadlines.includes(deadline.id) : false;
-
                                 });
                                 $scope.close();
                                 return ;
