@@ -1,6 +1,10 @@
 'use strict'
 
-angular.module("schoolines").controller("deadlineCreateController", ["$route", "$scope", "$location", "$localStorage", "AuthService", "DeadlineService", "Session", "OnlineStatusService", "IVLEService", "$window",
+angular.module("schoolines").config(function($mdDateLocaleProvider) {
+  $mdDateLocaleProvider.formatDate = function(date) {
+    return moment(date).format('DD/MM/YYYY');
+  };
+}).controller("deadlineCreateController", ["$route", "$scope", "$location", "$localStorage", "AuthService", "DeadlineService", "Session", "OnlineStatusService", "IVLEService", "$window",
     function($route, $scope, $location, $localStorage, AuthService, DeadlineService, Session, OnlineStatusService, IVLEService, $window) {
         $scope.onlineStatus = OnlineStatusService;
         $scope.$watch('onlineStatus.isOnline()', function(online) {
