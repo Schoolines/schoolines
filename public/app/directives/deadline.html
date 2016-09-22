@@ -4,9 +4,9 @@
 
 
 	<!--browser size-->
-	<md-content layout="column" hide show-gt-md class="full-height">
+	<md-content layout="column" hide show-gt-md>
 		<md-sidenav
-	class="md-sidenav-left border"
+	class="md-sidenav-left nav-border-right"
 	md-is-locked-open="$mdMedia('gt-md')"
 	md-whiteframe="4" flex>
 		<md-toolbar   class="md-hue-3 toolbar">
@@ -78,14 +78,14 @@
 			</md-sidenav>
 		</div>
 		<div layout="column" flex>
-			<md-toolbar   class="md-hue-3 toolbar logo-header">
+			<md-toolbar   class="md-hue-3 toolbar">
 			  <div class="md-toolbar-tools">
 				<span flex><img class="drawer-icon" src="images/drawer.png" ng-click="toggleLeft()"/></span><span><img onClick='window.location="/";' class="logo" src="images/logo.png"/></span><span flex></span>
 			  </div>
 			</md-toolbar>
 
 			<md-content>
-			  <md-list flex class="margin-list">
+			  <md-list flex class="margin-top-70">
 
 				<md-list-item  ng-repeat="item in deadlines"  >
 				  <span class="circle md-body-2" style="background-color:{{item.color}}" >{{ slash(item.module) }}</span>

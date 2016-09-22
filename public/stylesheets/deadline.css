@@ -8,24 +8,6 @@
 	margin:10px;
 }
 
-.loading{
-	position: fixed;
-	top: 50%;
-	left: 50%;
-	margin-top: -300px;
-	margin-left: -400px;
-
-}
-
-.logo{
-	height:100px !important;
-	margin-top:20px;
-}
-
-
-.border{
-	border-right: 1px solid #333;
-}
 .circle{
 	height:60px !important;
 	line-height: 60px !important;
@@ -35,39 +17,32 @@
 	vertical-align: middle;
 	color: #FFFFFF;
 }
-.space-between{
-	margin-bottom:5px;
+
+.loading{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	margin-top: -300px;
+	margin-left: -400px;
 }
-.logo-header{
-	min-height: 70px;
-	position:fixed;
-	top:0;
+
+.logo{
+	height:100px !important;
+	margin-top:20px;
 }
+
+.nav-border-right{
+	border-right: 1px solid #333;
+}
+
 .side-bar-fix{
 	position:fixed;
 	top:0;
 	height:100vh;
 }
 
-.height-150{
-	height:20px !important;
-}
-
 .drawer-icon{
 	height:25px;
 	width:25px;
 	margin-top:10px;
-}
-.margin-list{
-	margin-top:70px;
-}
-
-.remove-margin{
-	margin:0px;
-	padding:0px;
-	height:10px;
-}
-.full-height{
-
-	height:100vh;
 }

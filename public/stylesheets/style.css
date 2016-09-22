@@ -1,7 +1,3 @@
-.space-between{
-	margin-bottom:5px;
-}
-
 .bg-cover{
 	background-size: cover ;
 	padding:10px;
@@ -30,20 +26,13 @@
 	color:white !important;
 }
 
-.drawer-icon{
-	height:150px;
-	width:150px;
-	margin-top:80px;
-}
-
 .full-height{
 	height:100vh;
 }
-.margin-list{
+.margin-top-70{
 	margin-top:70px;
 }
 
 .header-height-70{
 	min-height: 70px;
-
 }
