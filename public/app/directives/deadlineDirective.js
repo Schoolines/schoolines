@@ -54,6 +54,7 @@ angular.module("schoolines").directive("deadline", function() {
 
 
                         $scope.filter = function(mod){
+                            $scope.selected = mod;
                             DeadlineService.currentMod = mod;
                             if(mod == "All"){
                                 $scope.deadlines = deadlines;
