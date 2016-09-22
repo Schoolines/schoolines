@@ -1,4 +1,4 @@
-var cacheName = 'schoolines-5';
+var cacheName = 'schoolines-6';
 var filesToCache = [
   '/app/components/index/index.html',
   '/app/components/deadlineDetail/deadlineDetail.html',
@@ -23,6 +23,7 @@ var filesToCache = [
   "/javascripts/vendor/sweetalert.min.js",
   "/javascripts/vendor/angular-material-datetimepicker.min.js",
   "/javascripts/vendor/ngStorage.min.js",
+  "/javascripts/vendor/sweetalert.min.js",
   "/app/app.js",
   "app/directives/deadlineDirective.js",
   "app/directives/navbarDirective.js",
@@ -32,6 +33,7 @@ var filesToCache = [
   "/app/services/ivleService.js",
   "/app/services/expService.js",
   "/app/services/session.js",
+  "/app/services/onlineStatusService.js",
   "/app/components/index/indexController.js",
   "/app/components/deadlineCreate/deadlineCreateController.js",
   "/app/components/deadlineDetail/deadlineDetailController.js",
