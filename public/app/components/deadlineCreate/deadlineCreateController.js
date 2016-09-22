@@ -41,6 +41,7 @@ angular.module("schoolines").config(function($mdDateLocaleProvider) {
             console.log("deadline", $scope.deadline);
             DeadlineService.create($scope.deadline).then(function(res) {
                 $route.reload();
+                sweetAlert("Deadline Contributed!", "Thank you for your contribution!", "success");
                 $location.path('/');
             });
         };
