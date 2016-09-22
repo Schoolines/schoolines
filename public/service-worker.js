@@ -28,6 +28,7 @@ var filesToCache = [
   "app/directives/navbarDirective.js",
   "/app/services/authService.js",
   "/app/services/deadlineService.js",
+  "/app/services/onlineStatusService.js",
   "/app/services/ivleService.js",
   "/app/services/expService.js",
   "/app/services/session.js",
