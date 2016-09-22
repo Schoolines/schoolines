@@ -48,6 +48,7 @@ router.post("/createUser", function(req, res, next) {
                         //     include: [models.School]
                     }).then(function(result) {
                         res.status(201).send({
+                            status: "success",
                             userId: result.id
                         });
                     });
@@ -72,8 +73,9 @@ router.post("/createUser", function(req, res, next) {
             });
 
         } else {
-            console.log("ERROR HERE");
-            next(error);
+            res.status(400).send({
+                status: "failed"
+            })
         }
     });
 });
@@ -94,7 +96,7 @@ router.post("/getModules", function(req, res, next) {
                 module_codes.push(json_data[i].CourseCode);
             }
 
-            res.status(200).send(module_codes);
+            res.status(200).send({modulesCodes: module_codes});
         } else {
             next(error);
         }

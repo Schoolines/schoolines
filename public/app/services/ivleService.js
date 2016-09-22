@@ -38,7 +38,7 @@ angular.module("schoolines").factory("IVLEService", function($q, $http, $locatio
                 token: token
             }).then(
                 function successCallback(response) {
-                    $localStorage.modules = response.data;
+                    $localStorage.modules = response.data.moduleCodes;
                 },
                 function errorCallback(response) {
                     console.log("Encountered Error: ", response.statusText);

@@ -1,10 +1,10 @@
 "use strict"
 
 var schoolines = angular.module("schoolines", [
-    "ngRoute","ngMaterial", "ngCookies", "ngResource", "ngStorage" , "ngMaterialDatePicker"
+    "ngRoute", "ngMaterial", "ngCookies", "ngResource", "ngStorage", "ngMaterialDatePicker"
 ]);
 
-schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider",
+schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider", "$window", "$rootScope", 
     function($routeProvider, $locationProvider, $mdThemingProvider) {
         $routeProvider.
         when("/", {
@@ -20,7 +20,7 @@ schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider",
             templateUrl: "/app/components/deadlineCreate/deadlineCreate.html",
             controller: "deadlineCreateController",
         }).
-        when("/deadlineDetail",{
+        when("/deadlineDetail", {
             templateUrl: "/app/components/deadlineDetail/deadlineDetail.html",
             controller: "deadlineDetailController"
         }).
@@ -32,11 +32,24 @@ schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider",
             redirectTo: "/"
         });
 
+        $rootScope.online = navigator.onLine;
+        $window.addEventListener("offline", function() {
+            $rootScope.$apply(function() {
+                $rootScope.online = false;
+            });
+        }, false);
+
+        $window.addEventListener("online", function() {
+            $rootScope.$apply(function() {
+                $rootScope.online = true;
+            });
+        }, false);
+
         $mdThemingProvider.theme('default').primaryPalette('blue-grey');
-    	$mdThemingProvider.enableBrowserColor({
-          theme: 'default', // Default is 'default'
-          palette: 'blue-grey', // Default is 'primary', any basic material palette and extended palettes are available
-          hue: '200' // Default is '800'
+        $mdThemingProvider.enableBrowserColor({
+            theme: 'default', // Default is 'default'
+            palette: 'blue-grey', // Default is 'primary', any basic material palette and extended palettes are available
+            hue: '200' // Default is '800'
         });
     }
 ]);
