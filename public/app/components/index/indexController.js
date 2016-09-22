@@ -1,24 +1,28 @@
 'use strict';
 angular.module("schoolines")
-    .controller('indexController', ["$scope", "$localStorage", "$timeout", "$mdSidenav", "$log", "$location", "$routeParams", "$window", "IVLEService", "DeadlineService", "AuthService", "Session",
-            function($scope, $localStorage, $timeout, $mdSidenav, $log, $location, $routeParams, $window, IVLEService, DeadlineService, AuthService, Session) {
-                $scope.$watch('online', function(newStatus) {
+    .controller('indexController', ["$scope", "$localStorage", "$timeout", "OnlineStatusService,"
+        "$mdSidenav", "$log", "$location", "$routeParams", "$window", "IVLEService", "DeadlineService", "AuthService", "Session",
+        function($scope, $localStorage, $timeout, OnlineStatusService, $mdSidenav, $log, $location, $routeParams, $window, IVLEService, DeadlineService, AuthService, Session) {
 
-                });
-                console.log(navigator.onLine);
-                $scope.title = "Schoolines";
-                $window.ga('send', 'pageview', { page: $location.url() });
+            $scope.title = "Schoolines";
+            $window.ga('send', 'pageview', {
+                page: $location.url()
+            });
 
-                AuthService.autologin().then(function(){
-                    console.log(Session.token);
-                    console.log(Session.userId);
-                });
+            AuthService.autologin().then(function() {
+                console.log(Session.token);
+                console.log(Session.userId);
+            });
 
-                $scope.redirectTo = function(url){
-                    $location.path(url);
+            $scope.redirectTo = function(url) {
+                    if (onlineStatus.isOnline()) {
+                        $location.path(url);
+                    } else {
+                        sweetAlert("Oops...", "Service not available offline.", "error");
+                    }
                 }
-                    // Save token to session
-                    // first time log in
+                // Save token to session
+                // first time log in
                 // if ($routeParams.token) {
                 //     IVLEService.createUser(Session.token);
                 //
@@ -31,4 +35,5 @@ angular.module("schoolines")
                 // }
 
 
-            }]);
+        }
+    ]);
