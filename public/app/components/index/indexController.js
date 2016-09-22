@@ -1,6 +1,6 @@
 'use strict';
 angular.module("schoolines")
-    .controller('indexController', ["$scope", "$localStorage", "$timeout", "OnlineStatusService,"
+    .controller('indexController', ["$scope", "$localStorage", "$timeout", "OnlineStatusService",
         "$mdSidenav", "$log", "$location", "$routeParams", "$window", "IVLEService", "DeadlineService", "AuthService", "Session",
         function($scope, $localStorage, $timeout, OnlineStatusService, $mdSidenav, $log, $location, $routeParams, $window, IVLEService, DeadlineService, AuthService, Session) {
 
