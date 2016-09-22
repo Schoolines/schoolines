@@ -14,6 +14,7 @@ angular.module("schoolines")
                 console.log(Session.userId);
             });
 
+            var onlineStatus = OnlineStatusService;
             $scope.redirectTo = function(url) {
                     if (onlineStatus.isOnline()) {
                         $location.path(url);
