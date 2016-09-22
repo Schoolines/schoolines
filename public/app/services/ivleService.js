@@ -31,14 +31,14 @@ angular.module("schoolines").factory("IVLEService", function($q, $http, $locatio
     /* Get Modules */
     ivleService.getModules = function(token) {
         console.log($localStorage.modules);
-        if ($localStorage.modules != undefined && $localStorage.modules.length > 0)
+        if (!!$localStorage.modules && $localStorage.modules.length > 0)
             return $q.resolve();
         else
             return $http.post('/userManagement/getModules', {
                 token: token
             }).then(
                 function successCallback(response) {
-                    $localStorage.modules = response.data.moduleCodes;
+                    $localStorage.modules = response.data.modulesCodes;
                 },
                 function errorCallback(response) {
                     console.log("Encountered Error: ", response.statusText);

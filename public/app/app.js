@@ -4,7 +4,7 @@ var schoolines = angular.module("schoolines", [
     "ngRoute", "ngMaterial", "ngCookies", "ngResource", "ngStorage", "ngMaterialDatePicker"
 ]);
 
-schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider", "$window", "$rootScope", 
+schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider", 
     function($routeProvider, $locationProvider, $mdThemingProvider) {
         $routeProvider.
         when("/", {
@@ -31,19 +31,6 @@ schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider", 
         otherwise({
             redirectTo: "/"
         });
-
-        $rootScope.online = navigator.onLine;
-        $window.addEventListener("offline", function() {
-            $rootScope.$apply(function() {
-                $rootScope.online = false;
-            });
-        }, false);
-
-        $window.addEventListener("online", function() {
-            $rootScope.$apply(function() {
-                $rootScope.online = true;
-            });
-        }, false);
 
         $mdThemingProvider.theme('default').primaryPalette('blue-grey');
         $mdThemingProvider.enableBrowserColor({
