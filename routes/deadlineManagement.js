@@ -19,7 +19,7 @@ router.post("/create", function(req, res){
                     res.sendStatus(201);
                 });
             }else{
-                res.sendStatus(400);
+                res.sendStatus(401);
             }
         })
 
@@ -31,12 +31,27 @@ router.post("/create", function(req, res){
 
 router.post("/delete", function(req, res){
     var id = req.body.id;
-    models.Deadline.destroy({
+    models.Deadline.findOne({
         where: {
             id: id
+        },
+        include: [models.User]
+    }).then(function(deadline){
+        if(!!deadline){
+            if(req.body.token == deadline.User.authToken){
+                models.Deadline.destroy({
+                    where: {
+                        id: id
+                    }
+                }).then(function(){
+                    res.sendStatus(200);
+                })
+            }else{
+                res.sendStatus(401);
+            }
+        }else{
+            res.sendStatus(400);
         }
-    }).then(function(){
-        res.sendStatus(200);
     })
 })
 

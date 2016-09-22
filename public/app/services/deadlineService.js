@@ -33,6 +33,7 @@ angular.module("schoolines").factory("DeadlineService", function($http, $httpPar
 
     deadlineService.deleteDeadline = function(id){
         var postParam = {
+            token: Session.token,
             id : id
         }
         return $http.post('/deadlineManagement/delete', postParam).then(function(res){
