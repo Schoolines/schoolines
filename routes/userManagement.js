@@ -96,9 +96,14 @@ router.post("/getModules", function(req, res, next) {
                 module_codes.push(json_data[i].CourseCode);
             }
 
-            res.status(200).send({modulesCodes: module_codes});
+            res.status(200).send({
+                modulesCodes: module_codes,
+                status: "success"
+            });
         } else {
-            next(error);
+            res.status(400).send({
+                status: "failed"
+            });
         }
     });
 });

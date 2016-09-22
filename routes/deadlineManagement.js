@@ -74,7 +74,7 @@ router.get("/getDeadlines", function(req, res) {
                 userId: deadline.User.id
             });
         }
-		res.send({
+		res.status(200).send({
 			deadlineArray: deadlineArray
 		});
 	});
