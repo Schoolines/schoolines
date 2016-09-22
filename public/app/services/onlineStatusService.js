@@ -6,7 +6,7 @@ angular.module("schoolines").factory("OnlineStatusService", ["$window", "$rootSc
         onlineStatusService.onLine = $window.navigator.onLine;
 
         onlineStatusService.isOnline = function() {
-            return onlineStatus.onLine;
+            return onlineStatusService.onLine;
         }
 
         $window.addEventListener("online", function() {

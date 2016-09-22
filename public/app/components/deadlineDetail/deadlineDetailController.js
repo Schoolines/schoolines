@@ -1,13 +1,13 @@
 'use strict'
 
-angular.module("schoolines").controller("deadlineDetailController", ["$scope", "$location", "$localStorage", "DeadlineService", "AuthService", "Session", "$window",
-    function($scope, $location, $localStorage, DeadlineService, AuthService, Session, $window) {
+angular.module("schoolines").controller("deadlineDetailController", ["$scope", "$location", "$localStorage", "DeadlineService", "OnlineStatusService", "AuthService", "Session", "$window",
+    function($scope, $location, $localStorage, DeadlineService, OnlineStatusService, AuthService, Session, $window) {
         AuthService.autologin().then(function() {
             $scope.deadline = DeadlineService.deadlineDetail;
 
 
             if (!$scope.deadline) {
-                alert("Please access this page from the main page\n Click OK to go to main page");
+                sweetAlert("Oops...", "Please access this page from the main page\n Click OK to go to main page", "error");
                 $location.path("/");
             }
 
@@ -45,14 +45,22 @@ angular.module("schoolines").controller("deadlineDetailController", ["$scope", "
             }
 
             $scope.deleteDeadline = function(id) {
-                $localStorage.deadlines.deadlineArray.splice($localStorage.deadlines.deadlineArray.indexOf(
-                    ($localStorage.deadlines.deadlineArray.filter(function(d) {
-                        return d.id == id;
-                    }))[0]
-                ), 1);
-                DeadlineService.deleteDeadline(id).then(function() {
-                    $location.path('/');
-                });
+
+                var onlineStatus = OnlineStatusService.isOnline();
+                if (!onlineStatus) {
+                    sweetAlert("Oops...", "Unable to delete while offline.", "error");
+                } else {
+
+                    $localStorage.deadlines.deadlineArray.splice($localStorage.deadlines.deadlineArray.indexOf(
+                        ($localStorage.deadlines.deadlineArray.filter(function(d) {
+                            return d.id == id;
+                        }))[0]
+                    ), 1);
+                    DeadlineService.deleteDeadline(id).then(function() {
+                        $location.path('/');
+                    });
+                }
+
 
             }
         })
