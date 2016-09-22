@@ -77,6 +77,8 @@ angular.module("schoolines").directive("deadline", function() {
                             }
                             $scope.deadlines = d;
                             $scope.close();
+                            if($scope.deadlines.length == 0)
+                                sweetAlert("Oops...", "You don't have any deadlines for this module\n Press + to contribute a deadline!", "error");
                         }
                         if(!!DeadlineService.currentMod)
                             $scope.filter(DeadlineService.currentMod);
