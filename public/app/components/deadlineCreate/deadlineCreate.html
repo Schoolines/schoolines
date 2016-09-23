@@ -33,8 +33,12 @@
 			<span flex></span>
 			<md-input-container>
 				<label>Time</label>
+				<input class="md-input time-mobile" type="time" 
+				   ng-model="string"
+				   ng-required="{{true}}" hide-gt-md>
 				<input class=" md-input time" mdc-datetime-picker="" date="false" time="true" id="time2"
-				placeholder="23:59" min-date="minDate" format="HH:mm" ng-model="deadline.timeStr" type="text"  ng-required="{{true}}">
+				placeholder="23:59" min-date="minDate" format="HH:mm" ng-model="deadline.timeStr" type="text"  ng-required="{{true}}" hide show-gt-md>
+				
 			</md-input-container>
 		</div>
 		

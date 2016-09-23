@@ -1,7 +1,9 @@
 .time{
 	max-width:60px;
 } 
-
+.time-mobile{
+	width:100px !important;
+} 
 .form-margin{
 	margin:10px;
 }
