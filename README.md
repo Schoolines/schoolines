@@ -11,7 +11,7 @@ Zhang Hanming (A0121658E) Back-end Development
 
 Er Ken Oung Yong Quan (A0139388M) Back-end Development
 
-Ten Zhi Yang () UI/UX Design
+Ten Zhi Yang (A0125415N) UI/UX Design
 
 
 
