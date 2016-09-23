@@ -16,7 +16,7 @@ angular.module("schoolines")
 
             var onlineStatus = OnlineStatusService;
             $scope.redirectTo = function(url) {
-                DeadlineService.deadlineDetail = null;
+                    DeadlineService.deadlineDetail = null;
                     if (onlineStatus.isOnline()) {
                         $location.path(url);
                     } else {

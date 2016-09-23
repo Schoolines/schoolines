@@ -1,66 +1,64 @@
-
-
 var express = require('express');
 var router = express.Router();
 var sequelize = require('sequelize');
 var models = require("../models");
 
-router.post("/create", function(req, res){
+router.post("/create", function(req, res) {
     var deadline = req.body.deadline;
-    if(!!deadline.userId){
+    if (!!deadline.userId) {
         models.User.findOne({
             where: {
                 id: deadline.userId
             }
-        }).then(function(user){
+        }).then(function(user) {
             console.log(user.authToken);
-            if(!!user && user.authToken == deadline.token){
-                if(!!deadline.id){
+            if (!!user && user.authToken == deadline.token) {
+                if (!!deadline.id) {
                     models.Deadline.update(deadline, {
                         where: {
                             id: deadline.id
                         }
-                    }).then(function(){
+                    }).then(function() {
                         res.sendStatus(200);
                     })
-                }else{
-                    models.Deadline.create(deadline).then(function(){
+                } else {
+                    models.Deadline.create(deadline).then(function() {
                         res.sendStatus(201);
                     });
                 }
 
-            }else{
+            } else {
                 res.sendStatus(401);
             }
         })
 
-    }else{
+    } else {
         res.sendStatus(400);
     }
 
 });
 
-router.post("/delete", function(req, res){
+router.post("/delete", function(req, res) {
     var id = req.body.id;
     models.Deadline.findOne({
         where: {
             id: id
         },
         include: [models.User]
-    }).then(function(deadline){
-        if(!!deadline){
-            if(req.body.token == deadline.User.authToken){
+    }).then(function(deadline) {
+        if (!!deadline) {
+            if (req.body.token == deadline.User.authToken) {
                 models.Deadline.destroy({
                     where: {
                         id: id
                     }
-                }).then(function(){
+                }).then(function() {
                     res.sendStatus(200);
                 })
-            }else{
+            } else {
                 res.sendStatus(401);
             }
-        }else{
+        } else {
             res.sendStatus(400);
         }
     })
@@ -68,14 +66,16 @@ router.post("/delete", function(req, res){
 
 /* Get Deadlines given a list of module codes */
 router.get("/getDeadlines", function(req, res) {
-	var modules = [];
-	for (i in req.query) {
-		modules.push(req.query[i]);
-	}
+    var modules = [];
+    for (i in req.query) {
+        modules.push(req.query[i]);
+    }
 
-	models.sequelize.Promise.all([
+    models.sequelize.Promise.all([
         models.Deadline.findAll({
-            order:  [['due', 'ASC']],
+            order: [
+                ['due', 'ASC']
+            ],
             where: {
                 module: modules,
             },
@@ -83,10 +83,10 @@ router.get("/getDeadlines", function(req, res) {
         }),
     ]).spread(function(allDeadlines) {
         var deadlineArray = [];
-        var convertDate = function(date){
+        var convertDate = function(date) {
             var d = new Date(date);
-            return d.getDate()+'/'+(parseInt(d.getMonth())+1)+'/'+d.getFullYear() + " " +((d.getHours() > 9 ) ? d.getHours() : "0"+d.getHours()) + ":" +
-            ((d.getMinutes() > 9 ) ? d.getMinutes() : "0"+d.getMinutes());
+            return d.getDate() + '/' + (parseInt(d.getMonth()) + 1) + '/' + d.getFullYear() + " " + ((d.getHours() > 9) ? d.getHours() : "0" + d.getHours()) + ":" +
+                ((d.getMinutes() > 9) ? d.getMinutes() : "0" + d.getMinutes());
         }
         for (var deadline of allDeadlines) {
             console.log(deadline.due);
@@ -100,10 +100,10 @@ router.get("/getDeadlines", function(req, res) {
                 userId: deadline.User.id
             });
         }
-		res.status(200).send({
-			deadlineArray: deadlineArray
-		});
-	});
+        res.status(200).send({
+            deadlineArray: deadlineArray
+        });
+    });
 });
 
 module.exports = router;

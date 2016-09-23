@@ -57,11 +57,11 @@ router.post("/createUser", function(req, res, next) {
                 } else {
                     models.User.update({
                         authToken: json_data.AuthToken
-                    },{
+                    }, {
                         where: {
                             id: user.id
                         }
-                    }).then(function(){
+                    }).then(function() {
                         console.log("user already exists");
                         res.status(201).send({
                             status: "exist",

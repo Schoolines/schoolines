@@ -38,7 +38,7 @@ angular.module("schoolines").controller("deadlineDetailController", ["$scope", "
                 $location.path('/');
             }
 
-            $scope.edit = function(){
+            $scope.edit = function() {
                 DeadlineService.deadlineDetail = $scope.deadline;
                 $location.path('/deadlineCreate');
             }

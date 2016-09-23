@@ -4,7 +4,7 @@ var schoolines = angular.module("schoolines", [
     "ngRoute", "ngMaterial", "ngCookies", "ngResource", "ngStorage", "ngMaterialDatePicker"
 ]);
 
-schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider", 
+schoolines.config(["$routeProvider", "$locationProvider", "$mdThemingProvider",
     function($routeProvider, $locationProvider, $mdThemingProvider) {
         $routeProvider.
         when("/", {

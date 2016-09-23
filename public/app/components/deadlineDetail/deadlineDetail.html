@@ -1,8 +1,8 @@
 <div flex>
-	<md-toolbar   class="toolbar md-hue-3 header-height-70">
-	  <div class="md-toolbar-tools">
-		<span flex></span><span><img onClick='window.location="/";' class="logo" src="/images/logo.png"/></span><span flex></span>
-	  </div>
+	<md-toolbar class="toolbar md-hue-3 header-height-70">
+		<div class="md-toolbar-tools">
+			<span flex></span><span><img onClick='window.location="/";' class="logo" src="/images/logo.png"/></span><span flex></span>
+		</div>
 	</md-toolbar>
 	<md-content layout="column" flex>
 		<div layout="column" layout-align="center center" flex>
@@ -19,7 +19,8 @@
 				<span class="md-body">{{deadline.des}}</span>
 			</md-list-item>
 			<md-list-item>
-				<span flex></span><md-button aria-label="Close" ng-click="redirectTo('/')">Back</md-button>
+				<span flex></span>
+				<md-button aria-label="Close" ng-click="redirectTo('/')">Back</md-button>
 				<md-button ng-if="isContributor" ng-click="edit()">Edit</md-button>
 			</md-list-item>
 			<md-list-item>
@@ -29,5 +30,5 @@
 				<md-button class="md-warn" ng-if="isContributor" ng-click="deleteDeadline(deadline.id)">Remove</md-button>
 			</md-list-item>
 		</md-list>
-	</md-content >
+	</md-content>
 </div>

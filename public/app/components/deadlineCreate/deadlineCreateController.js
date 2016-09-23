@@ -1,14 +1,14 @@
 'use strict'
 
 angular.module("schoolines").config(function($mdDateLocaleProvider) {
-  $mdDateLocaleProvider.formatDate = function(date) {
-    return moment(date).format('DD/MM/YYYY');
-  };
+    $mdDateLocaleProvider.formatDate = function(date) {
+        return moment(date).format('DD/MM/YYYY');
+    };
 }).controller("deadlineCreateController", ["$route", "$scope", "$location", "$localStorage", "AuthService", "DeadlineService", "Session", "OnlineStatusService", "IVLEService", "$window",
     function($route, $scope, $location, $localStorage, AuthService, DeadlineService, Session, OnlineStatusService, IVLEService, $window) {
         $scope.onlineStatus = OnlineStatusService;
         $scope.$watch('onlineStatus.isOnline()', function(online) {
-            if(!online){
+            if (!online) {
                 sweetAlert("Oops...", "Service not available offline.", "error");
                 $location.path("/");
             }
@@ -20,7 +20,7 @@ angular.module("schoolines").config(function($mdDateLocaleProvider) {
         AuthService.autologin().then(function() {
             $scope.deadline = (!!DeadlineService.deadlineDetail) ? DeadlineService.deadlineDetail : {};
             $scope.deadline.userId = Session.userId;
-            if(!!DeadlineService.deadlineDetail){
+            if (!!DeadlineService.deadlineDetail) {
                 var datetime = DeadlineService.deadlineDetail.date.split(" ");
                 var date = datetime[0].split('/');
 
@@ -36,7 +36,7 @@ angular.module("schoolines").config(function($mdDateLocaleProvider) {
 
                 console.log($scope.deadline.timeStrMob);
 
-            }else{
+            } else {
                 $scope.myDate = new Date();
             }
 
@@ -53,13 +53,12 @@ angular.module("schoolines").config(function($mdDateLocaleProvider) {
         }
         $scope.createDeadline = function() {
             $scope.deadline.due = $scope.myDate;
-			var timeObj;
-			if($scope.deadline.timeStr != undefined){
-				timeObj= $scope.deadline.timeStr;
-			}
-			else{
-				timeObj= $scope.deadline.timeStrMob;
-			}
+            var timeObj;
+            if ($scope.deadline.timeStr != undefined) {
+                timeObj = $scope.deadline.timeStr;
+            } else {
+                timeObj = $scope.deadline.timeStrMob;
+            }
 
             $scope.deadline.due.setHours(timeObj.getHours());
             $scope.deadline.due.setMinutes(timeObj.getMinutes());
@@ -67,10 +66,10 @@ angular.module("schoolines").config(function($mdDateLocaleProvider) {
             $scope.deadline.due = $scope.deadline.due.toString();
             console.log("deadline", $scope.deadline);
             DeadlineService.create($scope.deadline).then(function(res) {
-                if(res == 401){
+                if (res == 401) {
                     sweetAlert("Oops...", "Seems like you are not authenticated\n Press OK to login agian", "error");
                     $location.path("/splash");
-                }else{
+                } else {
                     $route.reload();
                     $location.path('/');
                 }
