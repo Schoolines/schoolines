@@ -12,7 +12,7 @@ angular.module("schoolines").factory("DeadlineService", function($http, $httpPar
         }
 
         return $http.post("/deadlineManagement/create", postParam).then(function(res){
-            return res;
+            return res.status;
         });
     }
 

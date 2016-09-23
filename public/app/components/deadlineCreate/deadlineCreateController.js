@@ -46,8 +46,14 @@ angular.module("schoolines").config(function($mdDateLocaleProvider) {
             $scope.deadline.due = $scope.deadline.due.toString();
             console.log("deadline", $scope.deadline);
             DeadlineService.create($scope.deadline).then(function(res) {
-                $route.reload();
-                $location.path('/');
+                if(res == 401){
+                    sweetAlert("Oops...", "Seems like you are not authenticated\n Press OK to login agian", "error");
+                    $location.path("/splash");
+                }else{
+                    $route.reload();
+                    $location.path('/');
+                }
+
             });
         };
     }
