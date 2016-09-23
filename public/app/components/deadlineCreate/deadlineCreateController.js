@@ -70,6 +70,7 @@ angular.module("schoolines").config(function($mdDateLocaleProvider) {
                     sweetAlert("Oops...", "Seems like you are not authenticated\n Press OK to login agian", "error");
                     $location.path("/splash");
                 } else {
+                    sweetAlert("Deadline Created!", "Thank you for contributing to Schoolines", "success");
                     $route.reload();
                     $location.path('/');
                 }
