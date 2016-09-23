@@ -9,7 +9,7 @@ Ng Chuen Weng Eugene (A0124507M) Project Management / User Testing
 
 Zhang Hanming (A0121658E) Back-end Development
 
-Er Ken Oung Yong Quan (A0139388M) Back-end Development
+Ken Oung Yong Quan (A0139388M) Back-end Development
 
 Ten Zhi Yang (A0125415N) UI/UX Design
 
