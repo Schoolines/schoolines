@@ -1,4 +1,4 @@
-var cacheName = 'schoolines-11';
+var cacheName = 'schoolines-12';
 var filesToCache = [
   '/app/components/index/index.html',
   '/app/components/deadlineDetail/deadlineDetail.html',
