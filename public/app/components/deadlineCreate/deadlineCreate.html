@@ -31,14 +31,17 @@
 				<md-datepicker  ng-model="myDate" ng-required="{{true}}"></md-datepicker>
 			</md-input-container>
 			<span flex></span>
-			<md-input-container>
+			<md-input-container hide show-gt-md>
+				<label>Time</label>
+				<input class=" md-input time" mdc-datetime-picker="" date="false" time="true" id="time2"
+				placeholder="23:59" min-date="minDate" format="HH:mm" ng-model="deadline.timeStr" type="text"  ng-required="!(deadline.timeStrMob || deadline.timeStr)">
+				
+			</md-input-container>
+			<md-input-container  hide-gt-md>
 				<label>Time</label>
 				<input class="md-input time-mobile" type="time" 
-				   ng-model="string"
-				   ng-required="{{true}}" hide-gt-md>
-				<input class=" md-input time" mdc-datetime-picker="" date="false" time="true" id="time2"
-				placeholder="23:59" min-date="minDate" format="HH:mm" ng-model="deadline.timeStr" type="text"  ng-required="{{true}}" hide show-gt-md>
-				
+				   ng-model="deadline.timeStrMob"
+				   ng-required="!(deadline.timeStrMob || deadline.timeStr)">
 			</md-input-container>
 		</div>
 		

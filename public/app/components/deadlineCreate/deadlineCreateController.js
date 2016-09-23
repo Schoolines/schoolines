@@ -32,7 +32,13 @@ angular.module("schoolines").config(function($mdDateLocaleProvider) {
         }
         $scope.createDeadline = function() {
             $scope.deadline.due = $scope.myDate;
-            var timeObj = $scope.deadline.timeStr;
+			var timeObj;
+			if($scope.deadline.timeStr != undefined){
+				timeObj= $scope.deadline.timeStr;
+			}
+			else{
+				timeObj= $scope.deadline.timeStrMob;
+			}
 
             $scope.deadline.due.setHours(timeObj.getHours());
             $scope.deadline.due.setMinutes(timeObj.getMinutes());
@@ -41,7 +47,6 @@ angular.module("schoolines").config(function($mdDateLocaleProvider) {
             console.log("deadline", $scope.deadline);
             DeadlineService.create($scope.deadline).then(function(res) {
                 $route.reload();
-                sweetAlert("Deadline Contributed!", "Thank you for your contribution!", "success");
                 $location.path('/');
             });
         };
