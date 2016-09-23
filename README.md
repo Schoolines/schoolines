@@ -1,6 +1,22 @@
 # Schoolines
 An crowd-sourced platform to manage deadlines
 
+url: https://schoolines.com/
+
+# Team
+
+Ng Chuen Weng Eugene (A0124507M) Project Management / User Testing
+
+Zhang Hanming (A0121658E) Back-end Development
+
+Er Ken Oung Yong Quan (A0139388M) Back-end Development
+
+Ten Zhi Yang () UI/UX Design
+
+
+
+
+
 # Setup
 
 Install packages run: `npm install`
