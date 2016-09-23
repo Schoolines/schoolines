@@ -18,9 +18,30 @@ angular.module("schoolines").config(function($mdDateLocaleProvider) {
             page: $location.url()
         });
         AuthService.autologin().then(function() {
-            $scope.deadline = {};
+            $scope.deadline = (!!DeadlineService.deadlineDetail) ? DeadlineService.deadlineDetail : {};
             $scope.deadline.userId = Session.userId;
-            $scope.myDate = new Date();
+            if(!!DeadlineService.deadlineDetail){
+                var datetime = DeadlineService.deadlineDetail.date.split(" ");
+                var date = datetime[0].split('/');
+
+                var time = datetime[1].split(":");
+                $scope.myDate = new Date();
+                $scope.myDate.setDate(date[0]);
+                $scope.myDate.setMonth(date[1]);
+                $scope.myDate.setFullYear(date[2]);
+                $scope.deadline.timeStr = new Date(1970, 0, 1, time[0], time[1], 0);
+                $scope.deadline.timeStrMob = new Date(1970, 0, 1, time[0], time[1], 0);
+
+
+
+                console.log($scope.deadline.timeStrMob);
+
+            }else{
+                $scope.myDate = new Date();
+            }
+
+
+
         });
 
         IVLEService.getModules(Session.token).then(function() {

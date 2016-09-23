@@ -38,6 +38,11 @@ angular.module("schoolines").controller("deadlineDetailController", ["$scope", "
                 $location.path('/');
             }
 
+            $scope.edit = function(){
+                DeadlineService.deadlineDetail = $scope.deadline;
+                $location.path('/deadlineCreate');
+            }
+
 
             $scope.unhideDeadline = function(id) {
                 $localStorage.hiddenDeadlines.splice($localStorage.hiddenDeadlines.indexOf(id), 1);

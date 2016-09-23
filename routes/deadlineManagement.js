@@ -15,9 +15,20 @@ router.post("/create", function(req, res){
         }).then(function(user){
             console.log(user.authToken);
             if(!!user && user.authToken == deadline.token){
-                models.Deadline.create(deadline).then(function(){
-                    res.sendStatus(201);
-                });
+                if(!!deadline.id){
+                    models.Deadline.update(deadline, {
+                        where: {
+                            id: deadline.id
+                        }
+                    }).then(function(){
+                        res.sendStatus(200);
+                    })
+                }else{
+                    models.Deadline.create(deadline).then(function(){
+                        res.sendStatus(201);
+                    });
+                }
+
             }else{
                 res.sendStatus(401);
             }
